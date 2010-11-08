@@ -1,0 +1,7 @@
+libqdbm-dev for Debian
+---------------
+
+ include files are installed in /usr/include/qdbm, so that
+ you may need -I/usr/include/qdbm to compile with qdbm.
+
+ -- Fumitoshi UKAI <ukai@debian.or.jp>, Mon May 23 11:23:17 2005

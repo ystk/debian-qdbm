@@ -1,0 +1,16 @@
+Description: qdbm.pc lists too many link flags
+Origin:      vendor
+Bug-Debian:  http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=397614
+Author:      KURASHIKI Satoru <lurdan@gmail.com>
+
+Index: qdbm/qdbm.pc.in
+===================================================================
+--- qdbm.orig/qdbm.pc.in	2010-04-14 08:49:28.141388000 +0900
++++ qdbm/qdbm.pc.in	2010-04-14 08:49:38.863163000 +0900
+@@ -10,5 +10,5 @@
+ Description: a high performance embedded database library
+ Version: @PACKAGE_VERSION@
+ Requires:
+-Libs: -L${libdir} -lqdbm @LIBS@
++Libs: -L${libdir} -lqdbm
+ Cflags: -I${includedir}

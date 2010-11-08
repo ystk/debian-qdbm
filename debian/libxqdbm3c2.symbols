@@ -1,0 +1,410 @@
+libxqdbm.so.3 #PACKAGE# #MINVER#
+#MISSING: 1.8.74-1.2# _ZN29_GLOBAL__N__ZN4qdbm8ourmutexE4initE@Base 1.8.74-1.1
+#MISSING: 1.8.74-1.2# _ZN37_GLOBAL__N_xadbm.cc_00000000_CAA5734A7xmallocEj@Base 1.8.74
+#MISSING: 1.8.74-1.2# _ZN37_GLOBAL__N_xadbm.cc_00000000_CAA5734A8xreallocEPvj@Base 1.8.74
+ (c++)"qdbm::Curia_error::Curia_error(qdbm::Curia_error const&)@Base" 1.8.74
+ (c++)"qdbm::Curia_error::Curia_error(int)@Base" 1.8.74
+ (c++)"qdbm::Curia_error::Curia_error()@Base" 1.8.74
+ (c++)"qdbm::Curia_error::Curia_error(qdbm::Curia_error const&)@Base" 1.8.74
+ (c++)"qdbm::Curia_error::Curia_error(int)@Base" 1.8.74
+ (c++)"qdbm::Curia_error::Curia_error()@Base" 1.8.74
+ (c++)"qdbm::Curia_error::~Curia_error()@Base" 1.8.74
+ (c++)"qdbm::Curia_error::~Curia_error()@Base" 1.8.74
+ (c++)"qdbm::Curia_error::~Curia_error()@Base" 1.8.74
+ (c++)"qdbm::Curia_error::operator=(qdbm::Curia_error const&)@Base" 1.8.74
+ (c++)"qdbm::Curia_error::operator=(int)@Base" 1.8.74
+ (c++)"qdbm::Depot_error::Depot_error(qdbm::Depot_error const&)@Base" 1.8.74
+ (c++)"qdbm::Depot_error::Depot_error(int)@Base" 1.8.74
+ (c++)"qdbm::Depot_error::Depot_error()@Base" 1.8.74
+ (c++)"qdbm::Depot_error::Depot_error(qdbm::Depot_error const&)@Base" 1.8.74
+ (c++)"qdbm::Depot_error::Depot_error(int)@Base" 1.8.74
+ (c++)"qdbm::Depot_error::Depot_error()@Base" 1.8.74
+ (c++)"qdbm::Depot_error::~Depot_error()@Base" 1.8.74
+ (c++)"qdbm::Depot_error::~Depot_error()@Base" 1.8.74
+ (c++)"qdbm::Depot_error::~Depot_error()@Base" 1.8.74
+ (c++)"qdbm::Depot_error::operator=(qdbm::Depot_error const&)@Base" 1.8.74
+ (c++)"qdbm::Depot_error::operator=(int)@Base" 1.8.74
+ (c++)"qdbm::Villa_error::Villa_error(qdbm::Villa_error const&)@Base" 1.8.74
+ (c++)"qdbm::Villa_error::Villa_error(int)@Base" 1.8.74
+ (c++)"qdbm::Villa_error::Villa_error()@Base" 1.8.74
+ (c++)"qdbm::Villa_error::Villa_error(qdbm::Villa_error const&)@Base" 1.8.74
+ (c++)"qdbm::Villa_error::Villa_error(int)@Base" 1.8.74
+ (c++)"qdbm::Villa_error::Villa_error()@Base" 1.8.74
+ (c++)"qdbm::Villa_error::~Villa_error()@Base" 1.8.74
+ (c++)"qdbm::Villa_error::~Villa_error()@Base" 1.8.74
+ (c++)"qdbm::Villa_error::~Villa_error()@Base" 1.8.74
+ (c++)"qdbm::Villa_error::operator=(qdbm::Villa_error const&)@Base" 1.8.74
+ (c++)"qdbm::Villa_error::operator=(int)@Base" 1.8.74
+ (c++)"qdbm::ADBM::~ADBM()@Base" 1.8.74
+ (c++)"qdbm::ADBM::~ADBM()@Base" 1.8.74
+ (c++)"qdbm::Curia::fatalerror()@Base" 1.8.74
+ (c++)"qdbm::Curia::get(char const*, int, int, int, int*)@Base" 1.8.74
+ (c++)"qdbm::Curia::out(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Curia::put(char const*, int, char const*, int, int)@Base" 1.8.74
+ (c++)"qdbm::Curia::DCAT@Base" 1.8.74
+ (c++)"qdbm::Curia::EMAP@Base" 1.8.74
+ (c++)"qdbm::Curia::bnum()@Base" 1.8.74
+ (c++)"qdbm::Curia::fsiz()@Base" 1.8.74
+ (c++)"qdbm::Curia::lock()@Base" 1.8.74
+ (c++)"qdbm::Curia::name()@Base" 1.8.74
+ (c++)"qdbm::Curia::rnum()@Base" 1.8.74
+ (c++)"qdbm::Curia::sync()@Base" 1.8.74
+ (c++)"qdbm::Curia::vsiz(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Curia::DKEEP@Base" 1.8.74
+ (c++)"qdbm::Curia::DOVER@Base" 1.8.74
+ (c++)"qdbm::Curia::EKEEP@Base" 1.8.74
+ (c++)"qdbm::Curia::ELOCK@Base" 1.8.74
+ (c++)"qdbm::Curia::EMISC@Base" 1.8.74
+ (c++)"qdbm::Curia::EMODE@Base" 1.8.74
+ (c++)"qdbm::Curia::EOPEN@Base" 1.8.74
+ (c++)"qdbm::Curia::EREAD@Base" 1.8.74
+ (c++)"qdbm::Curia::ESEEK@Base" 1.8.74
+ (c++)"qdbm::Curia::ESTAT@Base" 1.8.74
+ (c++)"qdbm::Curia::ESYNC@Base" 1.8.74
+ (c++)"qdbm::Curia::close()@Base" 1.8.74
+ (c++)"qdbm::Curia::error()@Base" 1.8.74
+ (c++)"qdbm::Curia::fsizd()@Base" 1.8.74
+ (c++)"qdbm::Curia::getwb(char const*, int, int, int, char*)@Base" 1.8.74
+ (c++)"qdbm::Curia::inode()@Base" 1.8.74
+ (c++)"qdbm::Curia::mtime()@Base" 1.8.74
+ (c++)"qdbm::Curia::EALLOC@Base" 1.8.74
+ (c++)"qdbm::Curia::ECLOSE@Base" 1.8.74
+ (c++)"qdbm::Curia::EFATAL@Base" 1.8.74
+ (c++)"qdbm::Curia::EMKDIR@Base" 1.8.74
+ (c++)"qdbm::Curia::ENOERR@Base" 1.8.74
+ (c++)"qdbm::Curia::ERMDIR@Base" 1.8.74
+ (c++)"qdbm::Curia::ETRUNC@Base" 1.8.74
+ (c++)"qdbm::Curia::EWRITE@Base" 1.8.74
+ (c++)"qdbm::Curia::OCREAT@Base" 1.8.74
+ (c++)"qdbm::Curia::OLCKNB@Base" 1.8.74
+ (c++)"qdbm::Curia::ONOLCK@Base" 1.8.74
+ (c++)"qdbm::Curia::OTRUNC@Base" 1.8.74
+ (c++)"qdbm::Curia::getlob(char const*, int, int, int, int*)@Base" 1.8.74
+ (c++)"qdbm::Curia::outlob(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Curia::putlob(char const*, int, char const*, int, int)@Base" 1.8.74
+ (c++)"qdbm::Curia::remove(char const*)@Base" 1.8.74
+ (c++)"qdbm::Curia::unlock()@Base" 1.8.74
+ (c++)"qdbm::Curia::EBROKEN@Base" 1.8.74
+ (c++)"qdbm::Curia::ENOITEM@Base" 1.8.74
+ (c++)"qdbm::Curia::EUNLINK@Base" 1.8.74
+ (c++)"qdbm::Curia::OREADER@Base" 1.8.74
+ (c++)"qdbm::Curia::OSPARSE@Base" 1.8.74
+ (c++)"qdbm::Curia::OWRITER@Base" 1.8.74
+ (c++)"qdbm::Curia::busenum()@Base" 1.8.74
+ (c++)"qdbm::Curia::nextkey()@Base" 1.8.74
+ (c++)"qdbm::Curia::rnumlob()@Base" 1.8.74
+ (c++)"qdbm::Curia::snaffle(char const*, char const*, int, int*)@Base" 1.8.74
+ (c++)"qdbm::Curia::version()@Base" 1.8.74
+ (c++)"qdbm::Curia::vsizlob(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Curia::fetchrec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Curia::firstkey()@Base" 1.8.74
+ (c++)"qdbm::Curia::getlobfd(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Curia::iterinit()@Base" 1.8.74
+ (c++)"qdbm::Curia::iternext(int*)@Base" 1.8.74
+ (c++)"qdbm::Curia::optimize(int)@Base" 1.8.74
+ (c++)"qdbm::Curia::setalign(int)@Base" 1.8.74
+ (c++)"qdbm::Curia::storerec(qdbm::Datum const&, qdbm::Datum const&, bool)@Base" 1.8.74
+ (c++)"qdbm::Curia::writable()@Base" 1.8.74
+ (c++)"qdbm::Curia::deleterec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Curia::setfbpsiz(int)@Base" 1.8.74
+ (c++)"qdbm::Curia::Curia(char const*, int, int, int)@Base" 1.8.74
+ (c++)"qdbm::Curia::Curia(qdbm::Curia const&)@Base" 1.8.74
+ (c++)"qdbm::Curia::Curia(char const*, int, int, int)@Base" 1.8.74
+ (c++)"qdbm::Curia::Curia(qdbm::Curia const&)@Base" 1.8.74
+ (c++)"qdbm::Curia::~Curia()@Base" 1.8.74
+ (c++)"qdbm::Curia::~Curia()@Base" 1.8.74
+ (c++)"qdbm::Curia::~Curia()@Base" 1.8.74
+ (c++)"qdbm::Curia::operator=(qdbm::Curia const&)@Base" 1.8.74
+ (c++)"qdbm::Datum::Datum(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Datum::Datum(char*, int, bool)@Base" 1.8.74
+ (c++)"qdbm::Datum::Datum(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Datum::Datum(int)@Base" 1.8.74
+ (c++)"qdbm::Datum::Datum(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Datum::Datum(char*, int, bool)@Base" 1.8.74
+ (c++)"qdbm::Datum::Datum(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Datum::Datum(int)@Base" 1.8.74
+ (c++)"qdbm::Datum::~Datum()@Base" 1.8.74
+ (c++)"qdbm::Datum::~Datum()@Base" 1.8.74
+ (c++)"qdbm::Datum::~Datum()@Base" 1.8.74
+ (c++)"qdbm::Datum::operator=(char const*)@Base" 1.8.74
+ (c++)"qdbm::Datum::operator=(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Datum::operator<<(char const*)@Base" 1.8.74
+ (c++)"qdbm::Datum::operator<<(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Depot::fatalerror()@Base" 1.8.74
+ (c++)"qdbm::Depot::get(char const*, int, int, int, int*)@Base" 1.8.74
+ (c++)"qdbm::Depot::out(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Depot::put(char const*, int, char const*, int, int)@Base" 1.8.74
+ (c++)"qdbm::Depot::DCAT@Base" 1.8.74
+ (c++)"qdbm::Depot::EMAP@Base" 1.8.74
+ (c++)"qdbm::Depot::bnum()@Base" 1.8.74
+ (c++)"qdbm::Depot::fsiz()@Base" 1.8.74
+ (c++)"qdbm::Depot::lock()@Base" 1.8.74
+ (c++)"qdbm::Depot::name()@Base" 1.8.74
+ (c++)"qdbm::Depot::rnum()@Base" 1.8.74
+ (c++)"qdbm::Depot::sync()@Base" 1.8.74
+ (c++)"qdbm::Depot::vsiz(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Depot::DKEEP@Base" 1.8.74
+ (c++)"qdbm::Depot::DOVER@Base" 1.8.74
+ (c++)"qdbm::Depot::EKEEP@Base" 1.8.74
+ (c++)"qdbm::Depot::ELOCK@Base" 1.8.74
+ (c++)"qdbm::Depot::EMISC@Base" 1.8.74
+ (c++)"qdbm::Depot::EMODE@Base" 1.8.74
+ (c++)"qdbm::Depot::EOPEN@Base" 1.8.74
+ (c++)"qdbm::Depot::EREAD@Base" 1.8.74
+ (c++)"qdbm::Depot::ESEEK@Base" 1.8.74
+ (c++)"qdbm::Depot::ESTAT@Base" 1.8.74
+ (c++)"qdbm::Depot::ESYNC@Base" 1.8.74
+ (c++)"qdbm::Depot::close()@Base" 1.8.74
+ (c++)"qdbm::Depot::error()@Base" 1.8.74
+ (c++)"qdbm::Depot::fdesc()@Base" 1.8.74
+ (c++)"qdbm::Depot::getwb(char const*, int, int, int, char*)@Base" 1.8.74
+ (c++)"qdbm::Depot::inode()@Base" 1.8.74
+ (c++)"qdbm::Depot::mtime()@Base" 1.8.74
+ (c++)"qdbm::Depot::EALLOC@Base" 1.8.74
+ (c++)"qdbm::Depot::ECLOSE@Base" 1.8.74
+ (c++)"qdbm::Depot::EFATAL@Base" 1.8.74
+ (c++)"qdbm::Depot::EMKDIR@Base" 1.8.74
+ (c++)"qdbm::Depot::ENOERR@Base" 1.8.74
+ (c++)"qdbm::Depot::ERMDIR@Base" 1.8.74
+ (c++)"qdbm::Depot::ETRUNC@Base" 1.8.74
+ (c++)"qdbm::Depot::EWRITE@Base" 1.8.74
+ (c++)"qdbm::Depot::OCREAT@Base" 1.8.74
+ (c++)"qdbm::Depot::OLCKNB@Base" 1.8.74
+ (c++)"qdbm::Depot::ONOLCK@Base" 1.8.74
+ (c++)"qdbm::Depot::OTRUNC@Base" 1.8.74
+ (c++)"qdbm::Depot::remove(char const*)@Base" 1.8.74
+ (c++)"qdbm::Depot::unlock()@Base" 1.8.74
+ (c++)"qdbm::Depot::EBROKEN@Base" 1.8.74
+ (c++)"qdbm::Depot::ENOITEM@Base" 1.8.74
+ (c++)"qdbm::Depot::EUNLINK@Base" 1.8.74
+ (c++)"qdbm::Depot::OREADER@Base" 1.8.74
+ (c++)"qdbm::Depot::OSPARSE@Base" 1.8.74
+ (c++)"qdbm::Depot::OWRITER@Base" 1.8.74
+ (c++)"qdbm::Depot::busenum()@Base" 1.8.74
+ (c++)"qdbm::Depot::nextkey()@Base" 1.8.74
+ (c++)"qdbm::Depot::snaffle(char const*, char const*, int, int*)@Base" 1.8.74
+ (c++)"qdbm::Depot::version()@Base" 1.8.74
+ (c++)"qdbm::Depot::fetchrec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Depot::firstkey()@Base" 1.8.74
+ (c++)"qdbm::Depot::iterinit()@Base" 1.8.74
+ (c++)"qdbm::Depot::iternext(int*)@Base" 1.8.74
+ (c++)"qdbm::Depot::optimize(int)@Base" 1.8.74
+ (c++)"qdbm::Depot::setalign(int)@Base" 1.8.74
+ (c++)"qdbm::Depot::storerec(qdbm::Datum const&, qdbm::Datum const&, bool)@Base" 1.8.74
+ (c++)"qdbm::Depot::writable()@Base" 1.8.74
+ (c++)"qdbm::Depot::deleterec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Depot::setfbpsiz(int)@Base" 1.8.74
+ (c++)"qdbm::Depot::Depot(char const*, int, int)@Base" 1.8.74
+ (c++)"qdbm::Depot::Depot(qdbm::Depot const&)@Base" 1.8.74
+ (c++)"qdbm::Depot::Depot(char const*, int, int)@Base" 1.8.74
+ (c++)"qdbm::Depot::Depot(qdbm::Depot const&)@Base" 1.8.74
+ (c++)"qdbm::Depot::~Depot()@Base" 1.8.74
+ (c++)"qdbm::Depot::~Depot()@Base" 1.8.74
+ (c++)"qdbm::Depot::~Depot()@Base" 1.8.74
+ (c++)"qdbm::Depot::operator=(qdbm::Depot const&)@Base" 1.8.74
+ (c++)"qdbm::Villa::fatalerror()@Base" 1.8.74
+ (c++)"qdbm::Villa::trancommit()@Base" 1.8.74
+ (c++)"qdbm::Villa::get(char const*, int, int*)@Base" 1.8.74
+ (c++)"qdbm::Villa::out(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::put(char const*, int, char const*, int, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::DCAT@Base" 1.8.74
+ (c++)"qdbm::Villa::DDUP@Base" 1.8.74
+ (c++)"qdbm::Villa::EMAP@Base" 1.8.74
+ (c++)"qdbm::Villa::fsiz()@Base" 1.8.74
+ (c++)"qdbm::Villa::lnum()@Base" 1.8.74
+ (c++)"qdbm::Villa::lock()@Base" 1.8.74
+ (c++)"qdbm::Villa::name()@Base" 1.8.74
+ (c++)"qdbm::Villa::nnum()@Base" 1.8.74
+ (c++)"qdbm::Villa::rnum()@Base" 1.8.74
+ (c++)"qdbm::Villa::sync()@Base" 1.8.74
+ (c++)"qdbm::Villa::vnum(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::vsiz(char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::DDUPR@Base" 1.8.74
+ (c++)"qdbm::Villa::DKEEP@Base" 1.8.74
+ (c++)"qdbm::Villa::DOVER@Base" 1.8.74
+ (c++)"qdbm::Villa::EKEEP@Base" 1.8.74
+ (c++)"qdbm::Villa::ELOCK@Base" 1.8.74
+ (c++)"qdbm::Villa::EMISC@Base" 1.8.74
+ (c++)"qdbm::Villa::EMODE@Base" 1.8.74
+ (c++)"qdbm::Villa::EOPEN@Base" 1.8.74
+ (c++)"qdbm::Villa::EREAD@Base" 1.8.74
+ (c++)"qdbm::Villa::ESEEK@Base" 1.8.74
+ (c++)"qdbm::Villa::ESTAT@Base" 1.8.74
+ (c++)"qdbm::Villa::ESYNC@Base" 1.8.74
+ (c++)"qdbm::Villa::close()@Base" 1.8.74
+ (c++)"qdbm::Villa::error()@Base" 1.8.74
+ (c++)"qdbm::Villa::inode()@Base" 1.8.74
+ (c++)"qdbm::Villa::mtime()@Base" 1.8.74
+ (c++)"qdbm::Villa::EALLOC@Base" 1.8.74
+ (c++)"qdbm::Villa::ECLOSE@Base" 1.8.74
+ (c++)"qdbm::Villa::EFATAL@Base" 1.8.74
+ (c++)"qdbm::Villa::EMKDIR@Base" 1.8.74
+ (c++)"qdbm::Villa::ENOERR@Base" 1.8.74
+ (c++)"qdbm::Villa::ERMDIR@Base" 1.8.74
+ (c++)"qdbm::Villa::ETRUNC@Base" 1.8.74
+ (c++)"qdbm::Villa::EWRITE@Base" 1.8.74
+ (c++)"qdbm::Villa::OCREAT@Base" 1.8.74
+ (c++)"qdbm::Villa::OLCKNB@Base" 1.8.74
+ (c++)"qdbm::Villa::ONOLCK@Base" 1.8.74
+ (c++)"qdbm::Villa::OTRUNC@Base" 1.8.74
+ (c++)"qdbm::Villa::OXCOMP@Base" 1.8.74
+ (c++)"qdbm::Villa::OYCOMP@Base" 1.8.74
+ (c++)"qdbm::Villa::OZCOMP@Base" 1.8.74
+ (c++)"qdbm::Villa::cmpdec(char const*, int, char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::cmpint(char const*, int, char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::cmplex(char const*, int, char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::cmpnum(char const*, int, char const*, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::curkey(int*)@Base" 1.8.74
+ (c++)"qdbm::Villa::curout()@Base" 1.8.74
+ (c++)"qdbm::Villa::curput(char const*, int, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::curval(int*)@Base" 1.8.74
+ (c++)"qdbm::Villa::remove(char const*)@Base" 1.8.74
+ (c++)"qdbm::Villa::unlock()@Base" 1.8.74
+ (c++)"qdbm::Villa::CPAFTER@Base" 1.8.74
+ (c++)"qdbm::Villa::EBROKEN@Base" 1.8.74
+ (c++)"qdbm::Villa::ENOITEM@Base" 1.8.74
+ (c++)"qdbm::Villa::EUNLINK@Base" 1.8.74
+ (c++)"qdbm::Villa::OREADER@Base" 1.8.74
+ (c++)"qdbm::Villa::OWRITER@Base" 1.8.74
+ (c++)"qdbm::Villa::curjump(char const*, int, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::curlast()@Base" 1.8.74
+ (c++)"qdbm::Villa::curnext()@Base" 1.8.74
+ (c++)"qdbm::Villa::curprev()@Base" 1.8.74
+ (c++)"qdbm::Villa::nextkey()@Base" 1.8.74
+ (c++)"qdbm::Villa::version()@Base" 1.8.74
+ (c++)"qdbm::Villa::CPBEFORE@Base" 1.8.74
+ (c++)"qdbm::Villa::JFORWARD@Base" 1.8.74
+ (c++)"qdbm::Villa::curfirst()@Base" 1.8.74
+ (c++)"qdbm::Villa::fetchrec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Villa::firstkey()@Base" 1.8.74
+ (c++)"qdbm::Villa::optimize()@Base" 1.8.74
+ (c++)"qdbm::Villa::storerec(qdbm::Datum const&, qdbm::Datum const&, bool)@Base" 1.8.74
+ (c++)"qdbm::Villa::writable()@Base" 1.8.74
+ (c++)"qdbm::Villa::CPCURRENT@Base" 1.8.74
+ (c++)"qdbm::Villa::JBACKWARD@Base" 1.8.74
+ (c++)"qdbm::Villa::deleterec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Villa::settuning(int, int, int, int)@Base" 1.8.74
+ (c++)"qdbm::Villa::tranabort()@Base" 1.8.74
+ (c++)"qdbm::Villa::tranbegin()@Base" 1.8.74
+ (c++)"qdbm::Villa::Villa(char const*, int, int (*)(char const*, int, char const*, int))@Base" 1.8.74
+ (c++)"qdbm::Villa::Villa(qdbm::Villa const&)@Base" 1.8.74
+ (c++)"qdbm::Villa::Villa(char const*, int, int (*)(char const*, int, char const*, int))@Base" 1.8.74
+ (c++)"qdbm::Villa::Villa(qdbm::Villa const&)@Base" 1.8.74
+ (c++)"qdbm::Villa::~Villa()@Base" 1.8.74
+ (c++)"qdbm::Villa::~Villa()@Base" 1.8.74
+ (c++)"qdbm::Villa::~Villa()@Base" 1.8.74
+ (c++)"qdbm::Villa::operator=(qdbm::Villa const&)@Base" 1.8.74
+ (c++)"qdbm::ourmutex@Base" 1.8.74
+ (c++)"qdbm::DBM_error::DBM_error(char const*)@Base" 1.8.74
+ (c++)"qdbm::DBM_error::DBM_error()@Base" 1.8.74
+ (c++)"qdbm::DBM_error::DBM_error(char const*)@Base" 1.8.74
+ (c++)"qdbm::DBM_error::DBM_error()@Base" 1.8.74
+ (c++)"qdbm::DBM_error::~DBM_error()@Base" 1.8.74
+ (c++)"qdbm::DBM_error::~DBM_error()@Base" 1.8.74
+ (c++)"qdbm::DBM_error::~DBM_error()@Base" 1.8.74
+ (c++)"qdbm::operator+(char const*, qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::operator+(qdbm::Datum const&, char const*)@Base" 1.8.74
+ (c++)"qdbm::operator+(qdbm::Datum const&, qdbm::Datum const&)@Base" 1.8.74
+ (c++)"qdbm::Curia_error::code() const@Base" 1.8.74
+ (c++)"qdbm::Curia_error::message() const@Base" 1.8.74
+ (c++)"qdbm::Curia_error::operator char const*() const@Base" 1.8.74
+ (c++)"qdbm::Curia_error::operator==(qdbm::Curia_error const&) const@Base" 1.8.74
+ (c++)"qdbm::Curia_error::operator==(int) const@Base" 1.8.74
+ (c++)"qdbm::Curia_error::operator!=(qdbm::Curia_error const&) const@Base" 1.8.74
+ (c++)"qdbm::Curia_error::operator!=(int) const@Base" 1.8.74
+ (c++)"qdbm::Depot_error::code() const@Base" 1.8.74
+ (c++)"qdbm::Depot_error::message() const@Base" 1.8.74
+ (c++)"qdbm::Depot_error::operator char const*() const@Base" 1.8.74
+ (c++)"qdbm::Depot_error::operator==(qdbm::Depot_error const&) const@Base" 1.8.74
+ (c++)"qdbm::Depot_error::operator==(int) const@Base" 1.8.74
+ (c++)"qdbm::Depot_error::operator!=(qdbm::Depot_error const&) const@Base" 1.8.74
+ (c++)"qdbm::Depot_error::operator!=(int) const@Base" 1.8.74
+ (c++)"qdbm::Villa_error::code() const@Base" 1.8.74
+ (c++)"qdbm::Villa_error::message() const@Base" 1.8.74
+ (c++)"qdbm::Villa_error::operator char const*() const@Base" 1.8.74
+ (c++)"qdbm::Villa_error::operator==(qdbm::Villa_error const&) const@Base" 1.8.74
+ (c++)"qdbm::Villa_error::operator==(int) const@Base" 1.8.74
+ (c++)"qdbm::Villa_error::operator!=(qdbm::Villa_error const&) const@Base" 1.8.74
+ (c++)"qdbm::Villa_error::operator!=(int) const@Base" 1.8.74
+ (c++)"qdbm::Datum::ptr() const@Base" 1.8.74
+ (c++)"qdbm::Datum::size() const@Base" 1.8.74
+ (c++)"qdbm::Datum::operator char const*() const@Base" 1.8.74
+ (c++)"qdbm::Datum::operator==(char const*) const@Base" 1.8.74
+ (c++)"qdbm::Datum::operator==(qdbm::Datum const&) const@Base" 1.8.74
+ (c++)"qdbm::Datum::operator[](int) const@Base" 1.8.74
+ (c++)"qdbm::Datum::operator!=(char const*) const@Base" 1.8.74
+ (c++)"qdbm::Datum::operator!=(qdbm::Datum const&) const@Base" 1.8.74
+ (c++)"qdbm::DBM_error::message() const@Base" 1.8.74
+ (c++)"qdbm::DBM_error::operator char const*() const@Base" 1.8.74
+ (c++)"typeinfo for qdbm::Curia_error@Base" 1.8.74
+ (c++)"typeinfo for qdbm::Depot_error@Base" 1.8.74
+ (c++)"typeinfo for qdbm::Villa_error@Base" 1.8.74
+ (c++)"typeinfo for qdbm::ADBM@Base" 1.8.74
+ (c++)"typeinfo for qdbm::Curia@Base" 1.8.74
+ (c++)"typeinfo for qdbm::Datum@Base" 1.8.74
+ (c++)"typeinfo for qdbm::Depot@Base" 1.8.74
+ (c++)"typeinfo for qdbm::Villa@Base" 1.8.74
+ (c++)"typeinfo for qdbm::DBM_error@Base" 1.8.74
+ (c++)"typeinfo name for qdbm::Curia_error@Base" 1.8.74
+ (c++)"typeinfo name for qdbm::Depot_error@Base" 1.8.74
+ (c++)"typeinfo name for qdbm::Villa_error@Base" 1.8.74
+ (c++)"typeinfo name for qdbm::ADBM@Base" 1.8.74
+ (c++)"typeinfo name for qdbm::Curia@Base" 1.8.74
+ (c++)"typeinfo name for qdbm::Datum@Base" 1.8.74
+ (c++)"typeinfo name for qdbm::Depot@Base" 1.8.74
+ (c++)"typeinfo name for qdbm::Villa@Base" 1.8.74
+ (c++)"typeinfo name for qdbm::DBM_error@Base" 1.8.74
+ (c++)"VTT for qdbm::Curia_error@Base" 1.8.74
+ (c++)"VTT for qdbm::Depot_error@Base" 1.8.74
+ (c++)"VTT for qdbm::Villa_error@Base" 1.8.74
+ (c++)"VTT for qdbm::Curia@Base" 1.8.74
+ (c++)"VTT for qdbm::Depot@Base" 1.8.74
+ (c++)"VTT for qdbm::Villa@Base" 1.8.74
+ (c++)"vtable for qdbm::Curia_error@Base" 1.8.74
+ (c++)"vtable for qdbm::Depot_error@Base" 1.8.74
+ (c++)"vtable for qdbm::Villa_error@Base" 1.8.74
+ (c++)"vtable for qdbm::ADBM@Base" 1.8.74
+ (c++)"vtable for qdbm::Curia@Base" 1.8.74
+ (c++)"vtable for qdbm::Datum@Base" 1.8.74
+ (c++)"vtable for qdbm::Depot@Base" 1.8.74
+ (c++)"vtable for qdbm::Villa@Base" 1.8.74
+ (c++)"vtable for qdbm::DBM_error@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia_error::~Curia_error()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia_error::~Curia_error()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot_error::~Depot_error()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot_error::~Depot_error()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa_error::~Villa_error()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa_error::~Villa_error()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia::~Curia()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia::~Curia()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot::~Depot()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot::~Depot()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa::~Villa()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa::~Villa()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia::close()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot::close()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa::close()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia_error::operator char const*() const@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot_error::operator char const*() const@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa_error::operator char const*() const@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia::storerec(qdbm::Datum const&, qdbm::Datum const&, bool)@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot::storerec(qdbm::Datum const&, qdbm::Datum const&, bool)@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa::storerec(qdbm::Datum const&, qdbm::Datum const&, bool)@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia_error::message() const@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot_error::message() const@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa_error::message() const@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia::deleterec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot::deleterec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa::deleterec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia::fetchrec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot::fetchrec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa::fetchrec(qdbm::Datum const&)@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia::firstkey()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot::firstkey()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa::firstkey()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia::nextkey()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot::nextkey()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa::nextkey()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Curia::error()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Depot::error()@Base" 1.8.74
+ (c++)"virtual thunk to qdbm::Villa::error()@Base" 1.8.74

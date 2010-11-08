@@ -1,0 +1,16 @@
+qdbm-cgi for Debian
+-------------------
+
+qdbm-cgi package for Debian.
+
+ * cgi programs are installed in /usr/lib/cgi-bin
+ * configuration file are put in /etc/qdbm and symlinked from /usr/lib/cgi-bin
+   You should modify these configuration files (datadir or so).
+
+ * You can copy a cgi program along with configuration file to any other
+   place (and modify configuration if necessary)
+
+ * Note that  cgi programs find its configuration file in current working 
+   directory.
+
+ -- Fumitoshi UKAI <ukai@debian.or.jp>, Mon May 23 03:14:15 2005

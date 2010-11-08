@@ -1,0 +1,3 @@
+etc/qdbm/qadm.conf usr/lib/cgi-bin/qadm.conf
+etc/qdbm/qfts.conf usr/lib/cgi-bin/qfts.conf
+etc/qdbm/qupl.conf usr/lib/cgi-bin/qupl.conf

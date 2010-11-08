@@ -1,0 +1,35 @@
+Description: lintian-tag hyphen-used-as-minus-sign
+Origin:      vendor
+Author:      KURASHIKI Satoru <lurdan@gmail.com>
+
+Index: qdbm/man/odidx.1
+===================================================================
+--- qdbm.orig/man/odidx.1	2010-07-15 08:34:05.293773555 +0900
++++ qdbm/man/odidx.1	2010-07-15 08:35:10.124794820 +0900
+@@ -61,22 +61,22 @@
+ .TP
+ .BI "\-tsuf " sufs
+ specify suffixes of plain text files in comma separated
+-format. The default is `-tsuf .txt,.text'.
++format. The default is `\-tsuf .txt,.text'.
+ .TP
+ .BI "\-hsuf " sufs
+ specify suffixes of HTML files in comma separated format. The
+-default is `-hsuf .html,.htm'.
++default is `\-hsuf .html,.htm'.
+ .SH EXAMPLES
+ For example, to register files which are under `/home/mikio' and whose
+ suffix are `.txt', `.c', or `.h', perform the following command.
+ .br
+-\fB     odidx register -tsuf ".txt,.c,.h" -hsuf "" casket /home/mikio\fP
++\fB     odidx register \-tsuf ".txt,.c,.h" \-hsuf "" casket /home/mikio\fP
+ .br
+ .PP
+ Thus, to retrieve documents which include `unix' and `posix' and show the top 8
+ terms, perform the following command.
+ .br
+-\fB     odmgr search -max 8 -h casket "unix posix"\fP
++\fB     odmgr search \-max 8 \-h casket "unix posix"\fP
+ .br
+ .SH SEE ALSO
+ .BR qdbm (3),

@@ -1,0 +1,15 @@
+libqdbm-java for Debian
+-----------------------
+
+ JNI shared library installed in /usr/lib/jni, so that you may need to
+ specify java.library.path
+
+ % java -classpath /usr/share/java/qdbm.jar -Djava.library.path=/usr/lib/jni \
+	qdbm.CuriaTester
+
+ % kaffe -classpath /usr/share/java/qdbm.jar qdbm.CuriaTester
+
+ You may invoke other tester program, such as qdbm.DeptTester 
+ and qdbm.VillaTester.
+
+ -- Fumitoshi UKAI <ukai@debian.or.jp>, Mon May 23 12:02:02 2005

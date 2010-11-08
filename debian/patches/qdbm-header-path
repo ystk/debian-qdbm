@@ -1,0 +1,182 @@
+Description: libqdbm++-dev doesn't find own includes 
+Origin:      vendor
+Bug-Ubuntu:  https://bugs.launchpad.net/ubuntu/+source/qdbm/+bug/450672
+Author:      KURASHIKI Satoru <lurdan@gmail.com>
+
+Index: qdbm/villa.h
+===================================================================
+--- qdbm.orig/villa.h	2010-05-08 14:43:33.750988718 +0900
++++ qdbm/villa.h	2010-05-08 14:43:42.303969958 +0900
+@@ -22,8 +22,8 @@
+ #endif
+ 
+ 
+-#include <depot.h>
+-#include <cabin.h>
++#include "depot.h"
++#include "cabin.h"
+ #include <stdlib.h>
+ #include <time.h>
+ 
+Index: qdbm/odeum.h
+===================================================================
+--- qdbm.orig/odeum.h	2010-05-08 14:43:33.667970210 +0900
++++ qdbm/odeum.h	2010-05-08 14:43:42.303969958 +0900
+@@ -22,10 +22,10 @@
+ #endif
+ 
+ 
+-#include <depot.h>
+-#include <curia.h>
+-#include <cabin.h>
+-#include <villa.h>
++#include "depot.h"
++#include "curia.h"
++#include "cabin.h"
++#include "villa.h"
+ #include <stdlib.h>
+ #include <time.h>
+ 
+Index: qdbm/vista.h
+===================================================================
+--- qdbm.orig/vista.h	2010-05-08 14:43:33.766970148 +0900
++++ qdbm/vista.h	2010-05-08 14:43:42.303969958 +0900
+@@ -28,9 +28,9 @@
+  *************************************************************************************************/
+ 
+ 
+-#include <depot.h>
+-#include <curia.h>
+-#include <cabin.h>
++#include "depot.h"
++#include "curia.h"
++#include "cabin.h"
+ #include <stdlib.h>
+ 
+ #define VLREC          VSTREC
+@@ -123,7 +123,7 @@
+ #define vlsetflags     vstsetflags
+ 
+ #if !defined(_VISTA_C)
+-#include <villa.h>
++#include "villa.h"
+ #endif
+ 
+ 
+Index: qdbm/curia.h
+===================================================================
+--- qdbm.orig/curia.h	2010-05-08 14:43:33.640003527 +0900
++++ qdbm/curia.h	2010-05-08 14:43:42.303969958 +0900
+@@ -22,7 +22,7 @@
+ #endif
+ 
+ 
+-#include <depot.h>
++#include "depot.h"
+ #include <stdlib.h>
+ #include <time.h>
+ 
+Index: qdbm/hovel.h
+===================================================================
+--- qdbm.orig/hovel.h	2010-05-08 14:43:33.651975091 +0900
++++ qdbm/hovel.h	2010-05-08 14:43:42.303969958 +0900
+@@ -22,8 +22,8 @@
+ #endif
+ 
+ 
+-#include <depot.h>
+-#include <curia.h>
++#include "depot.h"
++#include "curia.h"
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+Index: qdbm/plus/xadbm.h
+===================================================================
+--- qdbm.orig/plus/xadbm.h	2010-05-08 14:43:33.678969723 +0900
++++ qdbm/plus/xadbm.h	2010-05-08 14:43:42.303969958 +0900
+@@ -18,7 +18,7 @@
+ #define _XADBM_H
+ 
+ 
+-#include <xqdbm.h>
++#include "xqdbm.h"
+ 
+ 
+ 
+Index: qdbm/plus/xcuria.h
+===================================================================
+--- qdbm.orig/plus/xcuria.h	2010-05-08 14:43:33.694980975 +0900
++++ qdbm/plus/xcuria.h	2010-05-08 14:43:42.303969958 +0900
+@@ -18,12 +18,12 @@
+ #define _XCURIA_H
+ 
+ 
+-#include <xqdbm.h>
+-#include <xadbm.h>
++#include "xqdbm.h"
++#include "xadbm.h"
+ 
+ extern "C" {
+-#include <depot.h>
+-#include <curia.h>
++#include "depot.h"
++#include "curia.h"
+ #include <stdlib.h>
+ #include <time.h>
+ }
+Index: qdbm/plus/xdepot.h
+===================================================================
+--- qdbm.orig/plus/xdepot.h	2010-05-08 14:43:33.710970018 +0900
++++ qdbm/plus/xdepot.h	2010-05-08 14:43:42.308053648 +0900
+@@ -18,11 +18,11 @@
+ #define _XDEPOT_H
+ 
+ 
+-#include <xqdbm.h>
+-#include <xadbm.h>
++#include "xqdbm.h"
++#include "xadbm.h"
+ 
+ extern "C" {
+-#include <depot.h>
++#include "depot.h"
+ #include <stdlib.h>
+ #include <time.h>
+ }
+Index: qdbm/plus/xvilla.h
+===================================================================
+--- qdbm.orig/plus/xvilla.h	2010-05-08 14:43:33.726969327 +0900
++++ qdbm/plus/xvilla.h	2010-05-08 14:44:49.911002621 +0900
+@@ -18,13 +18,13 @@
+ #define _XVILLA_H
+ 
+ 
+-#include <xqdbm.h>
+-#include <xadbm.h>
++#include "xqdbm.h"
++#include "xadbm.h"
+ 
+ extern "C" {
+-#include <depot.h>
+-#include <cabin.h>
+-#include <villa.h>
++#include "depot.h"
++#include "cabin.h"
++#include "villa.h"
+ #include <stdlib.h>
+ #include <time.h>
+ }
+Index: qdbm/relic.h
+===================================================================
+--- qdbm.orig/relic.h	2010-05-08 14:43:33.738970362 +0900
++++ qdbm/relic.h	2010-05-08 14:43:42.308053648 +0900
+@@ -22,7 +22,7 @@
+ #endif
+ 
+ 
+-#include <depot.h>
++#include "depot.h"
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>

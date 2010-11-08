@@ -1,0 +1,266 @@
+Description: wraps some api call to use with ruby1.9 as well as ruby1.8
+Origin:      vendor
+Author:      KURASHIKI Satoru <lurdan@gmail.com>
+
+Index: qdbm/ruby/depot/mod_depot.c
+===================================================================
+--- qdbm.orig/ruby/depot/mod_depot.c	2010-05-24 21:14:04.978445369 +0900
++++ qdbm/ruby/depot/mod_depot.c	2010-05-24 21:14:10.306441645 +0900
+@@ -23,6 +23,11 @@
+ 
+ #define MAXOPEN 1024
+ 
++#ifndef RUBY_19
++#ifndef RSTRING_LEN
++#define RSTRING_LEN(v) (RSTRING(v)->len)
++#endif
++#endif
+ 
+ VALUE cdepoterror;
+ VALUE cdepoterror_ENOERR;
+@@ -274,9 +279,9 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   vbuf = STR2CSTR(vval);
+-  vsiz = RSTRING(vval)->len;
++  vsiz = RSTRING_LEN(vval);
+   FIXNUM_P(vdmode);
+   dmode = FIX2INT(vdmode);
+   depot = dptable[index];
+@@ -295,7 +300,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   depot = dptable[index];
+   if(!dpout(depot, kbuf, ksiz)){
+     if(dpsltable[index] && dpecode == DP_ENOITEM) return Qfalse;
+@@ -314,7 +319,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   FIXNUM_P(vstart);
+   start = FIX2INT(vstart);
+   FIXNUM_P(vmax);
+@@ -337,7 +342,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   depot = dptable[index];
+   if((vsiz = dpvsiz(depot, kbuf, ksiz)) == -1){
+     if(dpsltable[index] && dpecode == DP_ENOITEM) return INT2FIX(-1);
+Index: qdbm/ruby/curia/mod_curia.c
+===================================================================
+--- qdbm.orig/ruby/curia/mod_curia.c	2010-05-24 21:14:04.950446068 +0900
++++ qdbm/ruby/curia/mod_curia.c	2010-05-24 21:14:10.306441645 +0900
+@@ -24,6 +24,11 @@
+ 
+ #define MAXOPEN 1024
+ 
++#ifndef RUBY_19
++#ifndef RSTRING_LEN
++#define RSTRING_LEN(v) (RSTRING(v)->len)
++#endif
++#endif
+ 
+ VALUE ccuriaerror;
+ VALUE ccuriaerror_ENOERR;
+@@ -277,9 +282,9 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   vbuf = STR2CSTR(vval);
+-  vsiz = RSTRING(vval)->len;
++  vsiz = RSTRING_LEN(vval);
+   FIXNUM_P(vdmode);
+   dmode = FIX2INT(vdmode);
+   curia = crtable[index];
+@@ -298,7 +303,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   curia = crtable[index];
+   if(!crout(curia, kbuf, ksiz)){
+     if(crsltable[index] && dpecode == DP_ENOITEM) return Qfalse;
+@@ -317,7 +322,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   FIXNUM_P(vstart);
+   start = FIX2INT(vstart);
+   FIXNUM_P(vmax);
+@@ -340,7 +345,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   curia = crtable[index];
+   if((vsiz = crvsiz(curia, kbuf, ksiz)) == -1){
+     if(crsltable[index] && dpecode == DP_ENOITEM) return INT2FIX(-1);
+Index: qdbm/ruby/villa/mod_villa.c
+===================================================================
+--- qdbm.orig/ruby/villa/mod_villa.c	2010-05-24 21:14:05.018447382 +0900
++++ qdbm/ruby/villa/mod_villa.c	2010-05-24 21:14:10.306441645 +0900
+@@ -25,6 +25,11 @@
+ 
+ #define MAXOPEN 1024
+ 
++#ifndef RUBY_19
++#ifndef RSTRING_LEN
++#define RSTRING_LEN(v) (RSTRING(v)->len)
++#endif
++#endif
+ 
+ VALUE cvillaerror;
+ VALUE cvillaerror_ENOERR;
+@@ -353,9 +358,9 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   vbuf = STR2CSTR(vval);
+-  vsiz = RSTRING(vval)->len;
++  vsiz = RSTRING_LEN(vval);
+   FIXNUM_P(vdmode);
+   dmode = FIX2INT(vdmode);
+   villa = vltable[index];
+@@ -374,7 +379,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   villa = vltable[index];
+   if(!vlout(villa, kbuf, ksiz)){
+     if(vlsltable[index] && dpecode == DP_ENOITEM) return Qfalse;
+@@ -392,7 +397,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   villa = vltable[index];
+   if(!(vbuf = vlget(villa, kbuf, ksiz, &vsiz))){
+     if(vlsltable[index] && dpecode == DP_ENOITEM) return Qnil;
+@@ -410,7 +415,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   villa = vltable[index];
+   if((vsiz = vlvsiz(villa, kbuf, ksiz)) == -1){
+     if(vlsltable[index] && dpecode == DP_ENOITEM) return INT2FIX(-1);
+@@ -427,7 +432,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   villa = vltable[index];
+   vnum = vlvnum(villa, kbuf, ksiz);
+   return INT2FIX(vnum);
+@@ -498,7 +503,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   kbuf = STR2CSTR(vkey);
+-  ksiz = RSTRING(vkey)->len;
++  ksiz = RSTRING_LEN(vkey);
+   FIXNUM_P(vjmode);
+   jmode = FIX2INT(vjmode);
+   villa = vltable[index];
+@@ -552,7 +557,7 @@
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+   vbuf = STR2CSTR(vval);
+-  vsiz = RSTRING(vval)->len;
++  vsiz = RSTRING_LEN(vval);
+   FIXNUM_P(vcpmode);
+   cpmode = FIX2INT(vcpmode);
+   villa = vltable[index];
+Index: qdbm/ruby/Makefile.in
+===================================================================
+--- qdbm.orig/ruby/Makefile.in	2010-05-24 21:14:42.985459663 +0900
++++ qdbm/ruby/Makefile.in	2010-05-27 22:53:26.390008443 +0900
+@@ -28,16 +28,15 @@
+ RUNENV = LD_LIBRARY_PATH=.:..:../..:/usr/local/lib
+ 
+ 
+-
+ #================================================================
+ # Actions
+ #================================================================
+ 
+ 
+ all :
+-	cd depot && [ -f Makefile ] || $(RUNENV) ruby extconf.rb ; $(RUNENV) make
+-	cd curia && [ -f Makefile ] || $(RUNENV) ruby extconf.rb ; $(RUNENV) make
+-	cd villa && [ -f Makefile ] || $(RUNENV) ruby extconf.rb ; $(RUNENV) make
++	cd depot && [ -f Makefile ] || $(RUNENV) $(RUBY) extconf.rb ; $(RUNENV) make
++	cd curia && [ -f Makefile ] || $(RUNENV) $(RUBY) extconf.rb ; $(RUNENV) make
++	cd villa && [ -f Makefile ] || $(RUNENV) $(RUBY) extconf.rb ; $(RUNENV) make
+ 	@printf '\n'
+ 	@printf '#================================================================\n'
+ 	@printf '# Ready to install.\n'
+@@ -69,7 +68,7 @@
+ 
+ 
+ uninstall :
+-	pprefix=`ruby -e '$$:.each() do |path| ; printf("%s\n", path) ; end' | grep -v '^\.'` ; \
++	pprefix=`$(RUBY) -e '$$:.each() do |path| ; printf("%s\n", path) ; end' | grep -v '^\.'` ; \
+ 	  find $$pprefix -print | sort | uniq | \
+ 	  egrep '(mod_depot\.so|depot\.rb|mod_curia\.so|curia\.rb|mod_villa\.so|villa\.rb)' | \
+ 	  xargs rm -f
+@@ -85,27 +84,27 @@
+ 	sync ; sync
+ 	cd depot && rm -rf casket
+ 	cd depot && \
+-	  $(RUNENV) ruby -w -Ilib rbdptest write casket 10000 1000
++	  $(RUNENV) $(RUBY) -w -Ilib rbdptest write casket 10000 1000
+ 	cd depot && \
+-	  $(RUNENV) ruby -w -Ilib rbdptest read casket
++	  $(RUNENV) $(RUBY) -w -Ilib rbdptest read casket
+ 	cd depot && \
+-	  $(RUNENV) ruby -w -Ilib rbdptest misc casket
++	  $(RUNENV) $(RUBY) -w -Ilib rbdptest misc casket
+ 	cd depot && rm -rf casket
+ 	cd curia && rm -rf casket
+ 	cd curia && \
+-	  $(RUNENV) ruby -w -Ilib rbcrtest write casket 10000 1000 10
++	  $(RUNENV) $(RUBY) -w -Ilib rbcrtest write casket 10000 1000 10
+ 	cd curia && \
+-	  $(RUNENV) ruby -w -Ilib rbcrtest read casket
++	  $(RUNENV) $(RUBY) -w -Ilib rbcrtest read casket
+ 	cd curia && \
+-	  $(RUNENV) ruby -w -Ilib rbcrtest misc casket
++	  $(RUNENV) $(RUBY) -w -Ilib rbcrtest misc casket
+ 	cd curia && rm -rf casket
+ 	cd villa && rm -rf casket
+ 	cd villa && \
+-	  $(RUNENV) ruby -w -Ilib rbvltest write casket 10000
++	  $(RUNENV) $(RUBY) -w -Ilib rbvltest write casket 10000
+ 	cd villa && \
+-	  $(RUNENV) ruby -w -Ilib rbvltest read casket
++	  $(RUNENV) $(RUBY) -w -Ilib rbvltest read casket
+ 	cd villa && \
+-	  $(RUNENV) ruby -w -Ilib rbvltest misc casket
++	  $(RUNENV) $(RUBY) -w -Ilib rbvltest misc casket
+ 	cd villa && rm -rf casket
+ 	@printf '\n'
+ 	@printf '#================================================================\n'

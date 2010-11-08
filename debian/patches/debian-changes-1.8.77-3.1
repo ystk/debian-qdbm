@@ -1,0 +1,321 @@
+Description: Upstream changes introduced in version 1.8.77-3.1
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ qdbm (1.8.77-3.1) unstable; urgency=low
+ .
+   * Non-maintainer upload.
+   * Fix FTBFS:
+     + Apply patch from Julien Cristau to replace STR2CSTR with StringValuePtr.
+     + Hack: avoid modifying $0 (frozen variable in 1.9.2)
+     + Add -I. to work around removal of relative requires in 1.9.2.
+     Closes: #592775
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Lucas Nussbaum <lucas@lucas-nussbaum.net>
+Bug-Debian: http://bugs.debian.org/592775
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- qdbm-1.8.77.orig/ruby/Makefile.in
++++ qdbm-1.8.77/ruby/Makefile.in
+@@ -84,27 +84,27 @@ check :
+ 	sync ; sync
+ 	cd depot && rm -rf casket
+ 	cd depot && \
+-	  $(RUNENV) $(RUBY) -w -Ilib rbdptest write casket 10000 1000
++	  $(RUNENV) $(RUBY) -w -Ilib -I. rbdptest write casket 10000 1000
+ 	cd depot && \
+-	  $(RUNENV) $(RUBY) -w -Ilib rbdptest read casket
++	  $(RUNENV) $(RUBY) -w -Ilib -I. rbdptest read casket
+ 	cd depot && \
+-	  $(RUNENV) $(RUBY) -w -Ilib rbdptest misc casket
++	  $(RUNENV) $(RUBY) -w -Ilib -I. rbdptest misc casket
+ 	cd depot && rm -rf casket
+ 	cd curia && rm -rf casket
+ 	cd curia && \
+-	  $(RUNENV) $(RUBY) -w -Ilib rbcrtest write casket 10000 1000 10
++	  $(RUNENV) $(RUBY) -w -Ilib -I. rbcrtest write casket 10000 1000 10
+ 	cd curia && \
+-	  $(RUNENV) $(RUBY) -w -Ilib rbcrtest read casket
++	  $(RUNENV) $(RUBY) -w -Ilib -I. rbcrtest read casket
+ 	cd curia && \
+-	  $(RUNENV) $(RUBY) -w -Ilib rbcrtest misc casket
++	  $(RUNENV) $(RUBY) -w -Ilib -I. rbcrtest misc casket
+ 	cd curia && rm -rf casket
+ 	cd villa && rm -rf casket
+ 	cd villa && \
+-	  $(RUNENV) $(RUBY) -w -Ilib rbvltest write casket 10000
++	  $(RUNENV) $(RUBY) -w -Ilib -I. rbvltest write casket 10000
+ 	cd villa && \
+-	  $(RUNENV) $(RUBY) -w -Ilib rbvltest read casket
++	  $(RUNENV) $(RUBY) -w -Ilib -I. rbvltest read casket
+ 	cd villa && \
+-	  $(RUNENV) $(RUBY) -w -Ilib rbvltest misc casket
++	  $(RUNENV) $(RUBY) -w -Ilib -I. rbvltest misc casket
+ 	cd villa && rm -rf casket
+ 	@printf '\n'
+ 	@printf '#================================================================\n'
+--- qdbm-1.8.77.orig/ruby/depot/mod_depot.c
++++ qdbm-1.8.77/ruby/depot/mod_depot.c
+@@ -237,7 +237,7 @@ static VALUE rbdpopen(VALUE vself, VALUE
+   const char *name;
+   int index, omode, bnum;
+   if((index = getnewindex()) == -1) myerror(DP_EMISC);
+-  name = STR2CSTR(vname);
++  name = StringValuePtr(vname);
+   FIXNUM_P(vomode);
+   omode = FIX2INT(vomode);
+   FIXNUM_P(vbnum);
+@@ -278,9 +278,9 @@ static VALUE rbdpput(VALUE vself, VALUE
+   int index, ksiz, vsiz, dmode;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+-  vbuf = STR2CSTR(vval);
++  vbuf = StringValuePtr(vval);
+   vsiz = RSTRING_LEN(vval);
+   FIXNUM_P(vdmode);
+   dmode = FIX2INT(vdmode);
+@@ -299,7 +299,7 @@ static VALUE rbdpout(VALUE vself, VALUE
+   int index, ksiz;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   depot = dptable[index];
+   if(!dpout(depot, kbuf, ksiz)){
+@@ -318,7 +318,7 @@ static VALUE rbdpget(VALUE vself, VALUE
+   VALUE vval;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   FIXNUM_P(vstart);
+   start = FIX2INT(vstart);
+@@ -341,7 +341,7 @@ static VALUE rbdpvsiz(VALUE vself, VALUE
+   int index, ksiz, vsiz;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   depot = dptable[index];
+   if((vsiz = dpvsiz(depot, kbuf, ksiz)) == -1){
+--- qdbm-1.8.77.orig/ruby/depot/rbdptest
++++ qdbm-1.8.77/ruby/depot/rbdptest
+@@ -21,7 +21,6 @@ require 'depot'
+ 
+ # main routine
+ def main()
+-  $0.gsub!(/.*\//, "")
+   (ARGV.length >= 1) || usage()
+   if(ARGV[0] == "write")
+     rv = runwrite()
+@@ -278,7 +277,6 @@ end
+ 
+ 
+ # execute main
+-$0.gsub!(/.*\//, "")
+ exit(main())
+ 
+ 
+--- qdbm-1.8.77.orig/ruby/depot/lib/depot.rb
++++ qdbm-1.8.77/ruby/depot/lib/depot.rb
+@@ -13,7 +13,6 @@
+ # 02111-1307 USA.
+ #=================================================================================================
+ 
+-
+ require 'mod_depot'
+ require 'thread'
+ 
+--- qdbm-1.8.77.orig/ruby/curia/rbcrtest
++++ qdbm-1.8.77/ruby/curia/rbcrtest
+@@ -21,7 +21,6 @@ require 'curia'
+ 
+ # main routine
+ def main()
+-  $0.gsub!(/.*\//, "")
+   (ARGV.length >= 1) || usage()
+   if(ARGV[0] == "write")
+     rv = runwrite()
+@@ -283,7 +282,6 @@ end
+ 
+ 
+ # execute main
+-$0.gsub!(/.*\//, "")
+ exit(main())
+ 
+ 
+--- qdbm-1.8.77.orig/ruby/curia/mod_curia.c
++++ qdbm-1.8.77/ruby/curia/mod_curia.c
+@@ -238,7 +238,7 @@ static VALUE rbcropen(VALUE vself, VALUE
+   const char *name;
+   int index, omode, bnum, dnum;
+   if((index = getnewindex()) == -1) myerror(DP_EMISC);
+-  name = STR2CSTR(vname);
++  name = StringValuePtr(vname);
+   FIXNUM_P(vomode);
+   omode = FIX2INT(vomode);
+   FIXNUM_P(vbnum);
+@@ -281,9 +281,9 @@ static VALUE rbcrput(VALUE vself, VALUE
+   int index, ksiz, vsiz, dmode;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+-  vbuf = STR2CSTR(vval);
++  vbuf = StringValuePtr(vval);
+   vsiz = RSTRING_LEN(vval);
+   FIXNUM_P(vdmode);
+   dmode = FIX2INT(vdmode);
+@@ -302,7 +302,7 @@ static VALUE rbcrout(VALUE vself, VALUE
+   int index, ksiz;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   curia = crtable[index];
+   if(!crout(curia, kbuf, ksiz)){
+@@ -321,7 +321,7 @@ static VALUE rbcrget(VALUE vself, VALUE
+   VALUE vval;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   FIXNUM_P(vstart);
+   start = FIX2INT(vstart);
+@@ -344,7 +344,7 @@ static VALUE rbcrvsiz(VALUE vself, VALUE
+   int index, ksiz, vsiz;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   curia = crtable[index];
+   if((vsiz = crvsiz(curia, kbuf, ksiz)) == -1){
+--- qdbm-1.8.77.orig/ruby/curia/lib/curia.rb
++++ qdbm-1.8.77/ruby/curia/lib/curia.rb
+@@ -13,7 +13,6 @@
+ # 02111-1307 USA.
+ #=================================================================================================
+ 
+-
+ require 'mod_curia'
+ require 'thread'
+ 
+--- qdbm-1.8.77.orig/ruby/villa/mod_villa.c
++++ qdbm-1.8.77/ruby/villa/mod_villa.c
+@@ -309,7 +309,7 @@ static VALUE rbvlopen(VALUE vself, VALUE
+   int index, omode, cmode;
+   VLCFUNC cmp;
+   if((index = getnewindex()) == -1) myerror(DP_EMISC);
+-  name = STR2CSTR(vname);
++  name = StringValuePtr(vname);
+   FIXNUM_P(vomode);
+   omode = FIX2INT(vomode);
+   FIXNUM_P(vcmode);
+@@ -357,9 +357,9 @@ static VALUE rbvlput(VALUE vself, VALUE
+   int index, ksiz, vsiz, dmode;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+-  vbuf = STR2CSTR(vval);
++  vbuf = StringValuePtr(vval);
+   vsiz = RSTRING_LEN(vval);
+   FIXNUM_P(vdmode);
+   dmode = FIX2INT(vdmode);
+@@ -378,7 +378,7 @@ static VALUE rbvlout(VALUE vself, VALUE
+   int index, ksiz;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   villa = vltable[index];
+   if(!vlout(villa, kbuf, ksiz)){
+@@ -396,7 +396,7 @@ static VALUE rbvlget(VALUE vself, VALUE
+   VALUE vval;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   villa = vltable[index];
+   if(!(vbuf = vlget(villa, kbuf, ksiz, &vsiz))){
+@@ -414,7 +414,7 @@ static VALUE rbvlvsiz(VALUE vself, VALUE
+   int index, ksiz, vsiz;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   villa = vltable[index];
+   if((vsiz = vlvsiz(villa, kbuf, ksiz)) == -1){
+@@ -431,7 +431,7 @@ static VALUE rbvlvnum(VALUE vself, VALUE
+   int index, ksiz, vnum;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   villa = vltable[index];
+   vnum = vlvnum(villa, kbuf, ksiz);
+@@ -502,7 +502,7 @@ static VALUE rbvlcurjump(VALUE vself, VA
+   VALUE vval;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  kbuf = STR2CSTR(vkey);
++  kbuf = StringValuePtr(vkey);
+   ksiz = RSTRING_LEN(vkey);
+   FIXNUM_P(vjmode);
+   jmode = FIX2INT(vjmode);
+@@ -556,7 +556,7 @@ static VALUE rbvlcurput(VALUE vself, VAL
+   int index, vsiz, cpmode;
+   FIXNUM_P(vindex);
+   if((index = FIX2INT(vindex)) == -1) myerror(DP_EMISC);
+-  vbuf = STR2CSTR(vval);
++  vbuf = StringValuePtr(vval);
+   vsiz = RSTRING_LEN(vval);
+   FIXNUM_P(vcpmode);
+   cpmode = FIX2INT(vcpmode);
+--- qdbm-1.8.77.orig/ruby/villa/rbvltest
++++ qdbm-1.8.77/ruby/villa/rbvltest
+@@ -21,7 +21,6 @@ require 'villa'
+ 
+ # main routine
+ def main()
+-  $0.gsub!(/.*\//, "")
+   (ARGV.length >= 1) || usage()
+   if(ARGV[0] == "write")
+     rv = runwrite()
+@@ -280,7 +279,6 @@ end
+ 
+ 
+ # execute main
+-$0.gsub!(/.*\//, "")
+ exit(main())
+ 
+ 
