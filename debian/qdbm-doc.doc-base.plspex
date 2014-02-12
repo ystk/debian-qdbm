@@ -1,0 +1,10 @@
+Document: qdbm-doc-perl
+Title: qdbm perl document
+Author: Mikio Hirabayashi
+Abstract: This manual describes the qdbm perl interface
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/qdbm-doc/plspex.html
+Files: /usr/share/doc/qdbm-doc/plspex-ja.html /usr/share/doc/qdbm-doc/plapidoc/*.html
+

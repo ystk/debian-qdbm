@@ -16,7 +16,7 @@
 
 <p>This package is Java API for QDBM.  This package contains native methods which are depends on native libraries of QDBM.  Each class is packaged in `qdbm'.</p>
 
-<p>Refer to `<a href="http://qdbm.sourceforge.net/">http://qdbm.sourceforge.net/</a>' for more information.</p>
+<p>Refer to `<a href="http://fallabs.com/qdbm/">http://fallabs.com/qdbm/</a>' for more information.</p>
 
 </body>
 

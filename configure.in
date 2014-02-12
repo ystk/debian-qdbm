@@ -8,11 +8,11 @@
 
 
 # Targets
-AC_INIT(qdbm, 1.8.77)
+AC_INIT(qdbm, 1.8.78)
 
 # Export variables
 LIBVER=14
-LIBREV=13
+LIBREV=14
 TARGETS="all"
 MYDEFS=""
 MYOPTS=""

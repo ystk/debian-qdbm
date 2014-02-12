@@ -1,0 +1,39 @@
+Index: qdbm-1.8.78/depot.c
+===================================================================
+--- qdbm-1.8.78.orig/depot.c	2007-07-24 00:27:30.000000000 +0900
++++ qdbm-1.8.78/depot.c	2012-03-03 23:08:50.394451116 +0900
+@@ -19,6 +19,8 @@
+ #include "depot.h"
+ #include "myconf.h"
+ 
++#include <errno.h>
++
+ #define DP_FILEMODE    00644             /* permission of a creating file */
+ #define DP_MAGICNUMB   "[DEPOT]\n\f"     /* magic number on environments of big endian */
+ #define DP_MAGICNUML   "[depot]\n\f"     /* magic number on environments of little endian */
+@@ -761,7 +763,11 @@
+   }
+   *((int *)(depot->map + DP_FSIZOFF)) = depot->fsiz;
+   *((int *)(depot->map + DP_RNUMOFF)) = depot->rnum;
+-  if(msync(depot->map, depot->msiz, MS_SYNC) == -1){
++  if(msync(depot->map, depot->msiz, MS_SYNC) == -1
++#ifdef __GNU__
++     && errno != ENOSYS
++#endif
++    ){
+     dpecodeset(DP_EMAP, __FILE__, __LINE__);
+     depot->fatal = TRUE;
+     return FALSE;
+@@ -1473,7 +1479,11 @@
+   }
+   *((int *)(depot->map + DP_FSIZOFF)) = depot->fsiz;
+   *((int *)(depot->map + DP_RNUMOFF)) = depot->rnum;
+-  if(msync(depot->map, depot->msiz, MS_SYNC) == -1){
++  if(msync(depot->map, depot->msiz, MS_SYNC) == -1 
++#ifdef __GNU__
++     && errno != ENOSYS
++#endif
++    ){
+     dpecodeset(DP_EMAP, __FILE__, __LINE__);
+     depot->fatal = TRUE;
+     return FALSE;

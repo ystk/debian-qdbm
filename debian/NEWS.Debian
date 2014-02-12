@@ -1,0 +1,9 @@
+qdbm (1.8.78-1) unstable; urgency=low
+
+    gdbm emulation (hovel) is dropped from this version (cf. #620550).
+    It breaks symbol versioning policy to keep its old version despite
+    dropping gdbm_* symbols, assuming nobody use it.
+    If you've used its functionarity, please switch to gdbm, or rebuild
+    source package removing "--disable-gdbm" flag.
+
+ -- KURASHIKI Satoru <lurdan@gmail.com>  Fri, 19 Aug 2011 08:38:15 +0900

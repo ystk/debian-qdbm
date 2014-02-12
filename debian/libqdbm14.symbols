@@ -243,22 +243,6 @@ libqdbm.so.14 libqdbm14 #MINVER#
  dpversion@Base 1.8.74
  dpvsiz@Base 1.8.74
  dpwritable@Base 1.8.74
- gdbm_close@Base 1.8.74
- gdbm_delete@Base 1.8.74
- gdbm_errnoptr@Base 1.8.74
- gdbm_exists@Base 1.8.74
- gdbm_fdesc@Base 1.8.74
- gdbm_fetch@Base 1.8.74
- gdbm_firstkey@Base 1.8.74
- gdbm_nextkey@Base 1.8.74
- gdbm_open2@Base 1.8.74
- gdbm_open@Base 1.8.74
- gdbm_reorganize@Base 1.8.74
- gdbm_setopt@Base 1.8.74
- gdbm_store@Base 1.8.74
- gdbm_strerror@Base 1.8.74
- gdbm_sync@Base 1.8.74
- gdbm_version@Base 1.8.74
  odanalyzetext@Base 1.8.74
  odbnum@Base 1.8.74
  odbreaktext@Base 1.8.74

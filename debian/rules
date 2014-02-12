@@ -33,14 +33,19 @@ else
 	CFLAGS += -O2
 endif
 
+ifneq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
+	WITH_TESTS =
+else
+	WITH_TESTS = y
+endif
+
 CONFIGURE_VARS = CFLAGS="$(CFLAGS)" CPPFLAGS=""
 CONFIGURE_SWITCHES = --host=$(DEB_HOST_GNU_TYPE) \
 	--build=$(DEB_BUILD_GNU_TYPE) \
 	--prefix=/usr \
 	--mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info \
 	--includedir=\$${prefix}/include/qdbm \
-	--enable-pthread --enable-zlib --enable-iconv \
-	--enable-java
+	--enable-pthread --enable-zlib --enable-iconv
 
 DEFAULT_JAVA ?= $(shell readlink /etc/alternatives/java | sed s@/jre/bin/java@@)
 ifneq (,$(findstring /usr/bin/gij,$(DEFAULT_JAVA)))
@@ -51,9 +56,10 @@ JAVA_HOME = $(DEFAULT_JAVA)
 CONFIGURE_VARS += JAVA_HOME="$(JAVA_HOME)"
 endif
 
-build: build-stamp
-build-stamp:  
-	dh_testdir
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-arch build-ruby-stamp build-java-stamp
+build-stamp:
 	dh_testdir
 ifneq "$(wildcard /usr/share/misc/config.sub)" ""
 	cp -f /usr/share/misc/config.sub config.sub
@@ -61,24 +67,47 @@ endif
 ifneq "$(wildcard /usr/share/misc/config.guess)" ""
 	cp -f /usr/share/misc/config.guess config.guess
 endif
-
-	$(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
-	$(MAKE) && $(MAKE) check
+	autoconf
+	mkdir with-gdbm && cp qdbm.* *ake* config* *.c *.h with-gdbm/
+	$(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES) --disable-gdbm
+	$(MAKE)
+ifneq "$(WITH_TESTS)" ""
+	$(MAKE) check
+endif
+	#cd with-gdbm && $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
+	#cd with-gdbm &&	$(MAKE) && $(MAKE) check
 	cd cgi && $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
 	cd cgi && $(MAKE)
 	cd plus && $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
-	cd plus && $(MAKE) && $(MAKE) check
+	cd plus && $(MAKE)
+ifneq "$(WITH_TESTS)" ""
+	cd plus && $(MAKE) check
+endif
 	cd perl && $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
-	cd perl && $(MAKE) && $(MAKE) check
-	cp -pR ruby ruby19
+	cd perl && $(MAKE)
+ifneq "$(WITH_TESTS)" ""
+	cd perl && $(MAKE) check
+endif
+	touch build-stamp
+
+build-ruby-stamp: build-stamp
+	cp -pR ruby ruby19 && \
 	cd ruby && $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
-	export RUBY=/usr/bin/ruby1.8 && cd ruby && $(MAKE) && $(MAKE) check
+	export RUBY=/usr/bin/ruby1.8 && cd ruby && $(MAKE)
+ifneq "$(WITH_TESTS)" ""
+	export RUBY=/usr/bin/ruby1.8 && cd ruby && $(MAKE) check
+endif
 	cd ruby19 && $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
-	export RUBY=/usr/bin/ruby1.9.1 && cd ruby19 && $(MAKE) && $(MAKE) check
+	export RUBY=/usr/bin/ruby1.9.1 && cd ruby19 && $(MAKE)
+ifneq "$(WITH_TESTS)" ""
+	export RUBY=/usr/bin/ruby1.9.1 && cd ruby19 && $(MAKE) check
+endif
+	touch build-ruby-stamp
+
+build-java-stamp: build-stamp
 	cd java && CC=gcc $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
 	cd java && $(MAKE)
-	# Add here commands to compile the package.
-	touch build-stamp
+	touch build-java-stamp
 
 clean:
 	dh_testdir
@@ -90,13 +119,14 @@ clean:
 	-cd plus && $(MAKE) distclean
 	-cd cgi && $(MAKE) distclean
 	[ ! -f Makefile ] || $(MAKE) distclean
-	rm -rf ruby19 config.sub config.guess build-stamp
-	dh_clean 
+	rm -rf ruby19 config.sub config.guess *-stamp with-gdbm debian/tmp-gdbm
+	dh_clean
 
-install: build
+install: install-stamp install-ruby-stamp install-java-stamp
+install-stamp: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k 
+	dh_clean -k
 	dh_installdirs
 	# Add here commands to install the package into debian/tmp
 	$(MAKE) install prefix=$(CURDIR)/debian/tmp/usr MYHEADDIR=$(CURDIR)/debian/libqdbm-dev/usr/include/qdbm
@@ -106,8 +136,8 @@ install: build
 	# plus
 	cd plus && $(MAKE) install prefix=$(CURDIR)/debian/libxqdbm$(xmajor)c2/usr MYHEADDIR=$(CURDIR)/debian/libxqdbm-dev/usr/include/qdbm
 	mv $(CURDIR)/debian/libxqdbm$(xmajor)c2/usr/bin/* $(CURDIR)/debian/qdbm-util/usr/bin/
-	mv $(CURDIR)/debian/libxqdbm$(xmajor)c2/usr/lib/libxqdbm.a $(CURDIR)/debian/libqdbm-dev/usr/lib/
-	mv $(CURDIR)/debian/libxqdbm$(xmajor)c2/usr/lib/libxqdbm.so $(CURDIR)/debian/libqdbm-dev/usr/lib/
+	mv $(CURDIR)/debian/libxqdbm$(xmajor)c2/usr/lib/libxqdbm.a $(CURDIR)/debian/libxqdbm-dev/usr/lib/
+	mv $(CURDIR)/debian/libxqdbm$(xmajor)c2/usr/lib/libxqdbm.so $(CURDIR)/debian/libxqdbm-dev/usr/lib/
 	# perl
 	cd perl && $(MAKE) install DESTDIR=$(CURDIR)/debian/libqdbm-perl
 	chmod +w $(CURDIR)/debian/libqdbm-perl/usr/lib/perl*/*/*/*/*.so
@@ -115,30 +145,39 @@ install: build
 	rm -rf $(CURDIR)/debian/libqdbm-perl/usr/lib/perl $(CURDIR)/debian/libqdbm-perl/usr/lib/perl5/perllocal.pod
 	mv $(CURDIR)/debian/libqdbm-perl/usr/bin/* $(CURDIR)/debian/libqdbm-perl/usr/share/doc/libqdbm-perl/examples
 	find $(CURDIR)/debian -type f -name .packlist | xargs rm -f
-	# ruby
-	cd ruby && $(MAKE) install DESTDIR=$(CURDIR)/debian/libqdbm-ruby1.8 \
-		RUBYARCHDIR='$$(DESTDIR)/usr/lib/ruby/1.8/$$(arch)' \
-		RUBYLIBDIR='$$(DESTDIR)/usr/lib/ruby/1.8'
-	mv $(CURDIR)/debian/libqdbm-ruby1.8/usr/bin/* $(CURDIR)/debian/libqdbm-ruby1.8/usr/share/doc/libqdbm-ruby1.8/examples
-	cd ruby19 && $(MAKE) install DESTDIR=$(CURDIR)/debian/libqdbm-ruby1.9.1 \
-		RUBYARCHDIR='$$(DESTDIR)/usr/lib/ruby/1.9.1/$$(arch)' \
-		RUBYLIBDIR='$$(DESTDIR)/usr/lib/ruby/1.9.1'
-	mv $(CURDIR)/debian/libqdbm-ruby1.9.1/usr/bin/* $(CURDIR)/debian/libqdbm-ruby1.9.1/usr/share/doc/libqdbm-ruby1.9.1/examples
+	# fix rpath issue
+	chrpath -d $(CURDIR)/debian/tmp/usr/bin/*
+	chrpath -d $(CURDIR)/debian/tmp/usr/lib/*.so
+	#chrpath -d $(CURDIR)/with-gdbm/*.so
+	chrpath -d $(CURDIR)/debian/qdbm-cgi/usr/lib/cgi-bin/*.cgi
+	chrpath -d $(CURDIR)/debian/libqdbm-perl/usr/lib//perl5/*/*/*.so
+	dh_install --sourcedir=$(CURDIR)/debian/tmp
+	#mkdir -p $(CURDIR)/debian/libqdbm14-gdbm/usr/lib
+	#cp -Rf $(CURDIR)/with-gdbm/libqdbm.so.* $(CURDIR)/debian/libqdbm14-gdbm/usr/lib/
+	rm -f $(CURDIR)/debian/qdbm-util/usr/bin/*test
+	find $(CURDIR)/debian -type d -empty -delete
+	touch install-stamp
+
+install-ruby-stamp: install-stamp build-ruby-stamp
+	cd ruby && $(MAKE) install DESTDIR=$(CURDIR)/debian/ruby-qdbm \
+		RUBYARCHDIR='$$(DESTDIR)/usr/lib/ruby/vendor_ruby/1.8/$$(arch)' \
+		RUBYLIBDIR='$$(DESTDIR)/usr/lib/ruby/vendor_ruby'
+	mkdir -p $(CURDIR)/debian/ruby-qdbm/usr/share/doc/ruby-qdbm/examples
+	cd ruby19 && $(MAKE) install DESTDIR=$(CURDIR)/debian/ruby-qdbm \
+		RUBYARCHDIR='$$(DESTDIR)/usr/lib/ruby/vendor_ruby/1.9.1/$$(arch)' \
+		RUBYLIBDIR='$$(DESTDIR)/usr/lib/ruby/vendor_ruby'
+	mv $(CURDIR)/debian/ruby-qdbm/usr/bin/* $(CURDIR)/debian/ruby-qdbm/usr/share/doc/ruby-qdbm/examples && rmdir $(CURDIR)/debian/ruby-qdbm/usr/bin
 	rm -rf $(CURDIR)/debian/*/usr/share/qdbm
+	touch install-ruby-stamp
+
+install-java-stamp: install-stamp build-java-stamp
 	dh_installdirs -plibqdbm-java
 	cd java && $(MAKE) install DESTDIR=$(CURDIR)/debian/libqdbm-java
 	cp -L $(CURDIR)/debian/libqdbm-java/usr/lib/libjqdbm.so $(CURDIR)/debian/libqdbm-java/usr/lib/jni/libjqdbm.so
 	mv $(CURDIR)/debian/libqdbm-java/usr/lib/qdbm.jar $(CURDIR)/debian/libqdbm-java/usr/share/qdbm/lib/
 	rm -f $(CURDIR)/debian/libqdbm-java/usr/lib/libjqdbm.so*
 	rm -rf $(CURDIR)/debian/*/usr/share/qdbm/java
-	# fix rpath issue
-	chrpath -d $(CURDIR)/debian/tmp/usr/bin/*
-	chrpath -d $(CURDIR)/debian/tmp/usr/lib/*.so
-	chrpath -d $(CURDIR)/debian/qdbm-cgi/usr/lib/cgi-bin/*.cgi
-	chrpath -d $(CURDIR)/debian/libqdbm-perl/usr/lib//perl5/*/*/*.so
-	dh_install --sourcedir=$(CURDIR)/debian/tmp
-	rm -f $(CURDIR)/debian/qdbm-util/usr/bin/*test
-	find $(CURDIR)/debian -type d -empty -delete
+	touch install-java-stamp
 
 # Build architecture-independent files here.
 binary-indep: build install
@@ -146,6 +185,7 @@ binary-indep: build install
 	dh_testroot -i
 	dh_installchangelogs -i ChangeLog
 	dh_installdocs -i
+	dh_installdocs -A debian/NEWS.Debian
 	dh_installexamples -i
 #	dh_installman -i
 	dh_link -i
@@ -174,7 +214,7 @@ binary-arch: build install
 	dh_compress -a
 	dh_fixperms -a
 	dh_perl -plibqdbm-perl
-	dh_makeshlibs -a --no-package=libqdbm-java -V
+	dh_makeshlibs -a -X libqdbm-java -V
 	dh_installdeb -a
 	dh_shlibdeps -a -l debian/libqdbm$(major)/usr/lib:debian/libxqdbm$(xmajor)c2/usr/lib
 	dh_gencontrol -a
@@ -182,4 +222,4 @@ binary-arch: build install
 	dh_builddeb -a
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
+.PHONY: build clean binary-indep binary-arch binary install build-arch build-indep

@@ -1,0 +1,10 @@
+Document: qdbm-doc-cpp
+Title: qdbm cpp document
+Author: Mikio Hirabayashi
+Abstract: This manual describes the qdbm cpp interface
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/qdbm-doc/xspex.html
+Files: /usr/share/doc/qdbm-doc/xspex-ja.html /usr/share/doc/qdbm-doc/xapidoc/*.html
+

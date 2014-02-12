@@ -6,7 +6,7 @@
 This is a package of Win32 binaries of QDBM.  It contains C/Java
 APIs, their utility commands, and CGI scripts.
 
-See http://qdbm.sourceforge.net/ for more information.
+See http://fallabs.com/qdbm/ for more information.
 
 
 The following are documents of specifications.
@@ -86,12 +86,7 @@ QDBM was released under the terms of the GNU Lesser General Public
 License.  See the file `COPYING.txt' for details.
 
 QDBM was written by Mikio Hirabayashi. You can contact the author
-by e-mail to `mikio@users.sourceforge.net'.  However, as for
-topics which can be shared among other users, pleae send it to
-the mailing list. To join the mailing list, refer to the following
-URL.
-
-  http://lists.sourceforge.net/lists/listinfo/qdbm-users
+by e-mail to `mikio@fallabs.com'.
 
 
 Thanks.

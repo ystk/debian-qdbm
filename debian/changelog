@@ -1,3 +1,27 @@
+qdbm (1.8.78-2) unstable; urgency=low
+
+  * Apply patch from Neil Williams
+    + to fix dependency issue about libxqdbm-dev. (Closes: #655702)
+  * Apply patch from Pino Toscano
+    + to support nocheck in DEB_BUILD_OPTIONS. (Closes: #648649)
+    + to support hurd. (Closes: #648663)
+
+ -- KURASHIKI Satoru <lurdan@gmail.com>  Fri, 27 Jan 2012 11:55:30 +0900
+
+qdbm (1.8.78-1) unstable; urgency=low
+
+  * Upstream homepage moved.
+  * New Upstream release.
+  * New Standards-Version: 3.9.2
+  * fix misplaced library symlinks.
+  * fix typo of package description. (Closes: #592058)
+  * libqdbm14: drop gdbm wrapping. (Closes: #620550)
+  * update ruby packaging for wheezy.
+  * debian/copyright: migrate DEP-5 format with fixing imcomplete listings.
+    Thanks to Bart Martens's review at mentors.d.n.
+
+ -- KURASHIKI Satoru <lurdan@gmail.com>  Sat, 13 Oct 2011 08:42:07 +0900
+
 qdbm (1.8.77-4) unstable; urgency=high
 
   * Fix serious bugs:

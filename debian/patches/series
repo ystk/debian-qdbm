@@ -2,5 +2,6 @@ qdbm-pkgconfig
 qdbm-header-path
 qdbm-ruby-compat
 qdbm-man
-qdbm-no-usr-lib-path
-debian-changes-1.8.77-3.1
+qdbm-split-gdbm-wrapper
+qdbm-hurd-compat
+

@@ -9,8 +9,8 @@
 %define release 1
 %define libver @LIBVER@
 %define librev @LIBREV@
-%define disturl http://qdbm.sourceforge.net/
-%define homeurl http://qdbm.sourceforge.net/
+%define disturl http://fallabs.com/qdbm/
+%define homeurl http://fallabs.com/qdbm/
 
 Summary: Quick Database Manager
 Name: %{name}
@@ -19,7 +19,7 @@ Release: %{release}
 Source: %{disturl}%{name}-%{version}.tar.gz
 Copyright: LGPL
 Group: Development/Libraries
-Packager: Mikio Hirabayashi <mikio@users.sourceforge.net>
+Packager: Mikio Hirabayashi <mikio@fallabs.com>
 Distribution: Private
 Vendor: Private
 Url: %{homeurl}

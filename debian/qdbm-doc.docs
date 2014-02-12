@@ -1,15 +1,10 @@
 NEWS
 THANKS
-spex.html
-spex-ja.html
+doc/spex.html
+doc/spex-ja.html
 misc/benchmark.pdf
 misc/icon16.png
-misc/icon20.png
-misc/index.html
-misc/index.ja.html
-misc/logo.png
 misc/mymemo-ja.html
-misc/tutorial-ja.html
 cgi/cgispex.html
 cgi/cgispex-ja.html
 plus/xspex.html
