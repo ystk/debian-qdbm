@@ -12,18 +12,18 @@ How to install QDBM is explained in the specification.
   ChangeLog      - history of enhancement
   NEWS           - news for users
   THANKS         - list of contributors
-  spex.html      - specification
-  spex-ja.html   - specification in Japanese
+  doc/index.html - index of documents
 
 
 Contents of the directory tree is below.
 
   ./             - sources of QDBM
-  ./plus/        - API for C++ (read `./plus/xspex.html')
-  ./java/        - API for Java (read `./java/jspex.html')
-  ./perl/        - API for Perl (read `./perl/plspex.html')
-  ./ruby/        - API for Ruby (read `./ruby/rbspex.html')
-  ./cgi/         - CGI scripts (read `./cgi/cgispex.html')
+  ./doc/         - documents
+  ./plus/        - API for C++
+  ./java/        - API for Java
+  ./perl/        - API for Perl
+  ./ruby/        - API for Ruby
+  ./cgi/         - CGI scripts
   ./man1/        - manual pages for commands
   ./man3/        - manual pages for C API
   ./lab/         - for test and experiment
@@ -35,12 +35,7 @@ QDBM is released under the terms of the GNU Lesser General Public
 License.  See the file `COPYING' for details.
 
 QDBM was written by Mikio Hirabayashi.  You can contact the author
-by e-mail to `mikio@users.sourceforge.net'.  However, as for
-topics which can be shared among other users, pleae send it to
-the mailing list. To join the mailing list, refer to the following
-URL.
-
-  http://lists.sourceforge.net/lists/listinfo/qdbm-users
+by e-mail to `mikio@fallabs.com'.
 
 
 Thanks.

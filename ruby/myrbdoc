@@ -147,7 +147,7 @@ printf(outfile, "%s", <<__MYEOF)
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <link rel="contents" href="./" />
-<link rev="made" href="mailto:mikio\@users.sourceforge.net" />
+<link rev="made" href="mailto:mikio\@fallabs.com" />
 <title>#{title}</title>
 <style type="text/css">html { margin: 0em 0em; padding 0em 0em; background: #eeeeee none; }
 body { background-color: #eeeeee; color: #111111; padding: 1.5em 2em; margin: 0em 0em;
@@ -186,7 +186,7 @@ end
 
 
 # execute main
-$0.gsub!(/.*\//, "")
+#$0.gsub!(/.*\//, "")
 exit(main())
 
 

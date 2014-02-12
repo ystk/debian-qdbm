@@ -334,7 +334,7 @@ int vlput(VILLA *villa, const char *kbuf, int ksiz, const char *vbuf, int vsiz, 
       }
       vlnodeaddidx(villa, node, FALSE, pid, CB_DATUMPTR(key), CB_DATUMSIZE(key));
       CB_DATUMCLOSE(key);
-      if(CB_LISTNUM(node->idxs) <= villa->nodeidxmax) break;
+      if(CB_LISTNUM(node->idxs) <= villa->nodeidxmax || CB_LISTNUM(node->idxs) % 2 == 0) break;
       mid = CB_LISTNUM(node->idxs) / 2;
       idxp = (VLIDX *)CB_LISTVAL(node->idxs, mid);
       newnode = vlnodenew(villa, idxp->pid);
@@ -346,7 +346,7 @@ int vlput(VILLA *villa, const char *kbuf, int ksiz, const char *vbuf, int vsiz, 
         vlnodeaddidx(villa, newnode, TRUE, idxp->pid,
                      CB_DATUMPTR(idxp->key), CB_DATUMSIZE(idxp->key));
       }
-      for(i = 0; i < CB_LISTNUM(newnode->idxs); i++){
+      for(i = 0; i <= mid; i++){
         idxp = (VLIDX *)cblistpop(node->idxs, NULL);
         CB_DATUMCLOSE(idxp->key);
         free(idxp);

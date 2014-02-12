@@ -11,7 +11,7 @@
 <meta name="author" content="Mikio Hirabayashi" />
 <link rel="contents" href="./" />
 <link rel="icon" href="icon16.png" />
-<link rev="made" href="mailto:mikio@users.sourceforge.net" />
+<link rev="made" href="mailto:mikio@fallabs.com" />
 <title>データベースライブラリ QDBM</title>
 <style type="text/css">html { margin: 0em 0em; padding: 0em 0em; background: #eeeeee none; }
 body { margin: 2em 2em; padding: 0em 0em;
@@ -124,7 +124,6 @@ ul.lines { list-style-type: none; }
 <li><a href="plspex-ja.html">Perl用API仕様書</a></li>
 <li><a href="rbspex-ja.html">Ruby用API仕様書</a></li>
 <li><a href="cgispex-ja.html">CGIスクリプト仕様書</a></li>
-<li><a href="tutorial-ja.html">チュートリアル</a></li>
 </ul>
 
 <hr />
@@ -134,76 +133,17 @@ ul.lines { list-style-type: none; }
 <p>以下のパッケージをダウンロードしてください。Linux用バイナリパッケージは、CとC++とJavaのAPIと、CGIスクリプトを納めています。Windows用バイナリパッケージは、CとJavaのAPIと、CGIスクリプトを納めています。</p>
 
 <ul>
-<li><a href="qdbm-1.8.77.tar.gz">最新のソースパッケージ（バージョン1.8.77）</a></li>
-</ul>
-
-<ul>
-<li><a href="past/">過去のバージョン</a></li>
-<li><a href="rpm/">Linux用バイナリパッケージ（RPM）</a></li>
-<li><a href="win/">Windows用バイナリパッケージ</a></li>
-<li><a href="misc/">関連するパッケージ</a></li>
-</ul>
-
-<ul>
-<li><a href="http://www.freshports.org/databases/qdbm/">FreeBSD用パッケージ</a></li>
-<li><a href="http://www.blastwave.org/packages.php/qdbm">Solaris用パッケージ</a></li>
-<li><a href="http://hpux.cs.utah.edu/hppd/cgi-bin/search?package=on&amp;description=on&amp;term=qdbm&amp;Search=Search">HP-UX用パッケージ</a></li>
-<li><a href="http://www.sbellon.de/sw-ports.html">RISC OS用パッケージ</a></li>
-</ul>
-
-<hr />
-
-<h2>アプリケーション</h2>
-
-<p>QDBMのアプリケーションには以下のものがあります。もしあなたのプロジェクトがQDBMを使っているなら、連絡をいただければこのリストに追加いたします。</p>
-
-<ul>
-<li><a href="http://hyperestraier.sourceforge.net/">Hyper Estraier</a> : 平林幹雄による共同体的全文検索システム</li>
-<li><a href="http://estraier.sourceforge.net/">Estraier</a> : 平林幹雄による個人用全文検索システム</li>
-<li><a href="http://diqt.sourceforge.net/">Diqt</a> : 平林幹雄による多言語辞書検索システム</li>
-<li><a href="http://rbbs.sourceforge.jp/">RBBS</a> : 平林幹雄によるWeb掲示板システム</li>
-<li><a href="http://harvest.sourceforge.net/">Harvest</a> : Kang-Jin Leeらによる分散情報検索システム</li>
-<li><a href="http://bogofilter.sourceforge.net/">Bogofilter</a> : Eric S. Raymondらによるベイズ式スパムメールフィルタ</li>
-<li><a href="http://www.foo.be/mqs/">MQS</a> : Alexandre Dulaunoyによるキュー管理サービス</li>
-<li><a href="http://www.zedshaw.com/projects/ruby_odeum/">Ruby/Odeum</a> : Zed A. Shawによる転置APIのRuby用インターフェイス</li>
-<li><a href="http://www.surfulater.com/">Surfulater</a> : Soft As it Gets Pty社によるWebページスクラップブック</li>
-<li><a href="http://mutt-ng.berlios.de/">Mutt-NG</a> : Andreas Krennmairらによるテキスト型メールクライアント</li>
-<li><a href="http://smfs.sourceforge.net/">SMFS</a> : Eugene KurmaninによるSendmail用フィルタシステム</li>
-<li><a href="http://dixit.sourceforge.net/">Dixit</a> : Octavian Procopiucによるルーマニア語辞書検索システム</li>
-</ul>
-
-<hr />
-
-<h2>兄弟</h2>
-
-<p>UNIX標準のDBMに追従したライブラリはたくさんあります。それぞれ特徴がありますので、あなたの製品にとって都合がいいものを選んでください。NDBMは古いので、もはや使う理由はないでしょう。SDBMはApache Projectで管理され、GDBMはGNU Projectで管理されています。それらは最も人気があり、また数多くテストされているものでしょう。TDBはSamba Teamで管理されており、複数同時の書き込みが可能です。TinyCDBは随時の更新はできませんが、最も高速に動作します。Berkeley DBは非常に多機能で、ACID準拠で、多くの商用製品で使われています。最後に、QDBMは性能と機能と移植性と利便性のバランスがとれた製品です。</p>
-
-<ul>
-<li><a href="bros/ndbm-bsd-5.1.m1.tar.gz">NDBM</a> : BSDによるNew DBM</li>
-<li><a href="bros/sdbm-1.0.2.tar.gz">SDBM</a> : Ozan S. YigitによるSubstitute DBM</li>
-<li><a href="bros/gdbm-1.8.3.tar.gz">GDBM</a> : Philip A. NelsonらによるGNU Database Manager</li>
-<li><a href="bros/tdb-1.0.6.tar.gz">TDB</a> : Andrew TridgellらによるTrivial Database</li>
-<li><a href="bros/tinycdb-0.75.tar.gz">TinyCDB</a> :  Michael TokarevによるConstant Database</li>
-<li><a href="bros/db-4.4.20.tar.gz">Berkeley DB</a> : Sleepycat Software社によるBerkeley DB</li>
-</ul>
-
-<ul>
-<li><a href="benchmark.pdf">ベンチマークテストのレポート</a></li>
-<li><a href="http://tokyocabinet.sourceforge.net/">Tokyo Cabinet</a> : QDBMの後継製品</li>
+<li><a href="qdbm-1.8.78.tar.gz">最新のソースパッケージ（バージョン1.8.78）</a></li>
 </ul>
 
 <hr />
 
 <h2>その他の情報</h2>
 
-<p>QDBMは<a href="http://qdbm.sourceforge.net/mikio/">平林幹雄</a>が作成しました。作者と連絡をとるには、`mikio@users.sourceforge.net' 宛に電子メールを送ってください。ただし、質問やバグレポートなど、他のユーザと共有できる話題はメーリングリストに送ってください。メーリングリストの参加方法については、`<a href="http://lists.sourceforge.net/lists/listinfo/qdbm-users">http://lists.sourceforge.net/lists/listinfo/qdbm-users</a>' を参照してください。</p>
-
-<p>SourceForge.netにおけるプロジェクトページは `<a href="http://sourceforge.net/projects/qdbm/">http://sourceforge.net/projects/qdbm/</a>' にあります。Freshmeatにおける更新情報は `<a href="http://freshmeat.net/projects/qdbm/">http://freshmeat.net/projects/qdbm/</a>' から参照できます。</p>
+<p>QDBMは<a href="http://fallabs.com/mikio/">平林幹雄</a>が作成しました。作者と連絡をとるには、`mikio@fallabs.com' 宛に電子メールを送ってください。</p>
 
 <hr />
 
 </body>
 
 </html>
-
-<!-- END OF FILE -->
