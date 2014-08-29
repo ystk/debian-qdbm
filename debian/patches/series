@@ -4,4 +4,5 @@ qdbm-ruby-compat
 qdbm-man
 qdbm-split-gdbm-wrapper
 qdbm-hurd-compat
+qdbm-perl-vendor
 

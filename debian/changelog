@@ -1,3 +1,30 @@
+qdbm (1.8.78-5) unstable; urgency=medium
+
+  [ gregor herrmann ]
+  * Fix "hardcodes /usr/lib/perl5":
+    - add patch that passes INSTALLDIRS=vendor to perl Makefile.PL calls
+    - remove usr/lib/perl5 from debian/libqdbm-perl.dirs, files are in the
+      right directories now
+    - remove some now unneeded (re)moving in debian/rules and adjust paths
+    - use $Config{vendorarch} in debian/rules to get the perl library path at
+      build time
+    (Closes: #752806)
+
+ -- KURASHIKI Satoru <lurdan@gmail.com>  Mon, 07 Jul 2014 08:55:46 +0900
+
+qdbm (1.8.78-4) unstable; urgency=medium
+
+  * New Standards-Version: 3.9.5.
+  * update symbol file to fix ftbfs with gcc-4.9. (Closes: #746898)
+
+ -- KURASHIKI Satoru <lurdan@gmail.com>  Thu, 19 Jun 2014 23:48:34 +0900
+
+qdbm (1.8.78-3) unstable; urgency=low
+
+  * Drop ruby1.8 bindings. (Closes: #734346)
+
+ -- KURASHIKI Satoru <lurdan@gmail.com>  Tue, 07 Jan 2014 20:59:20 +0900
+
 qdbm (1.8.78-2) unstable; urgency=low
 
   * Apply patch from Neil Williams

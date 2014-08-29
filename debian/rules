@@ -7,7 +7,7 @@
 # This special exception was added by Craig Small in version 0.37 of dh-make.
 
 # Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+export DH_VERBOSE=1
 
 # work-around for upstream build that thinks $(HOME) belongs in the
 # include path for all builds!
@@ -25,7 +25,9 @@ DEB_BUILD_GNU_CPU   ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_CPU)
 DEB_BUILD_GNU_SYSTEM ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_SYSTEM)
 DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-CFLAGS = -Wall -g $(shell getconf LFS_CFLAGS)
+PERL_LIB := $(shell perl -MConfig -e 'print substr($$Config{vendorarch},1)' )
+
+export CFLAGS = -Wall -g $(shell getconf LFS_CFLAGS)
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 	CFLAGS += -O0
@@ -58,7 +60,7 @@ endif
 
 build: build-arch build-indep
 build-arch: build-stamp
-build-indep: build-arch build-ruby-stamp build-java-stamp
+build-indep: build-arch build-java-stamp
 build-stamp:
 	dh_testdir
 ifneq "$(wildcard /usr/share/misc/config.sub)" ""
@@ -90,19 +92,13 @@ ifneq "$(WITH_TESTS)" ""
 endif
 	touch build-stamp
 
-build-ruby-stamp: build-stamp
-	cp -pR ruby ruby19 && \
-	cd ruby && $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
-	export RUBY=/usr/bin/ruby1.8 && cd ruby && $(MAKE)
-ifneq "$(WITH_TESTS)" ""
-	export RUBY=/usr/bin/ruby1.8 && cd ruby && $(MAKE) check
-endif
-	cd ruby19 && $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
-	export RUBY=/usr/bin/ruby1.9.1 && cd ruby19 && $(MAKE)
-ifneq "$(WITH_TESTS)" ""
-	export RUBY=/usr/bin/ruby1.9.1 && cd ruby19 && $(MAKE) check
-endif
-	touch build-ruby-stamp
+#build-ruby-stamp: build-stamp
+#	cd ruby && $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
+#	export RUBY=/usr/bin/ruby && cd ruby && $(MAKE)
+#ifneq "$(WITH_TESTS)" ""
+#	export RUBY=/usr/bin/ruby && cd ruby && $(MAKE) check
+#endif
+#	touch build-ruby-stamp
 
 build-java-stamp: build-stamp
 	cd java && CC=gcc $(CONFIGURE_VARS) ./configure $(CONFIGURE_SWITCHES)
@@ -140,17 +136,14 @@ install-stamp: build
 	mv $(CURDIR)/debian/libxqdbm$(xmajor)c2/usr/lib/libxqdbm.so $(CURDIR)/debian/libxqdbm-dev/usr/lib/
 	# perl
 	cd perl && $(MAKE) install DESTDIR=$(CURDIR)/debian/libqdbm-perl
-	chmod +w $(CURDIR)/debian/libqdbm-perl/usr/lib/perl*/*/*/*/*.so
-	mv $(CURDIR)/debian/libqdbm-perl/usr/lib/perl/*/* $(CURDIR)/debian/libqdbm-perl/usr/lib/perl5/
-	rm -rf $(CURDIR)/debian/libqdbm-perl/usr/lib/perl $(CURDIR)/debian/libqdbm-perl/usr/lib/perl5/perllocal.pod
+	chmod +w $(CURDIR)/debian/libqdbm-perl/$(PERL_LIB)/auto/*/*.so
 	mv $(CURDIR)/debian/libqdbm-perl/usr/bin/* $(CURDIR)/debian/libqdbm-perl/usr/share/doc/libqdbm-perl/examples
-	find $(CURDIR)/debian -type f -name .packlist | xargs rm -f
 	# fix rpath issue
 	chrpath -d $(CURDIR)/debian/tmp/usr/bin/*
 	chrpath -d $(CURDIR)/debian/tmp/usr/lib/*.so
 	#chrpath -d $(CURDIR)/with-gdbm/*.so
 	chrpath -d $(CURDIR)/debian/qdbm-cgi/usr/lib/cgi-bin/*.cgi
-	chrpath -d $(CURDIR)/debian/libqdbm-perl/usr/lib//perl5/*/*/*.so
+	chrpath -d $(CURDIR)/debian/libqdbm-perl/$(PERL_LIB)/auto/*/*.so
 	dh_install --sourcedir=$(CURDIR)/debian/tmp
 	#mkdir -p $(CURDIR)/debian/libqdbm14-gdbm/usr/lib
 	#cp -Rf $(CURDIR)/with-gdbm/libqdbm.so.* $(CURDIR)/debian/libqdbm14-gdbm/usr/lib/
@@ -158,16 +151,8 @@ install-stamp: build
 	find $(CURDIR)/debian -type d -empty -delete
 	touch install-stamp
 
-install-ruby-stamp: install-stamp build-ruby-stamp
-	cd ruby && $(MAKE) install DESTDIR=$(CURDIR)/debian/ruby-qdbm \
-		RUBYARCHDIR='$$(DESTDIR)/usr/lib/ruby/vendor_ruby/1.8/$$(arch)' \
-		RUBYLIBDIR='$$(DESTDIR)/usr/lib/ruby/vendor_ruby'
-	mkdir -p $(CURDIR)/debian/ruby-qdbm/usr/share/doc/ruby-qdbm/examples
-	cd ruby19 && $(MAKE) install DESTDIR=$(CURDIR)/debian/ruby-qdbm \
-		RUBYARCHDIR='$$(DESTDIR)/usr/lib/ruby/vendor_ruby/1.9.1/$$(arch)' \
-		RUBYLIBDIR='$$(DESTDIR)/usr/lib/ruby/vendor_ruby'
-	mv $(CURDIR)/debian/ruby-qdbm/usr/bin/* $(CURDIR)/debian/ruby-qdbm/usr/share/doc/ruby-qdbm/examples && rmdir $(CURDIR)/debian/ruby-qdbm/usr/bin
-	rm -rf $(CURDIR)/debian/*/usr/share/qdbm
+install-ruby-stamp: install-stamp
+	dh_ruby --install
 	touch install-ruby-stamp
 
 install-java-stamp: install-stamp build-java-stamp

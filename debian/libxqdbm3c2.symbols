@@ -2,6 +2,7 @@ libxqdbm.so.3 #PACKAGE# #MINVER#
 #MISSING: 1.8.74-1.2# _ZN29_GLOBAL__N__ZN4qdbm8ourmutexE4initE@Base 1.8.74-1.1
 #MISSING: 1.8.74-1.2# _ZN37_GLOBAL__N_xadbm.cc_00000000_CAA5734A7xmallocEj@Base 1.8.74
 #MISSING: 1.8.74-1.2# _ZN37_GLOBAL__N_xadbm.cc_00000000_CAA5734A8xreallocEPvj@Base 1.8.74
+#MISSING: 1.8.78-3# (c++)"qdbm::ADBM::~ADBM()@Base" 1.8.74
  (c++)"qdbm::Curia_error::Curia_error(qdbm::Curia_error const&)@Base" 1.8.74
  (c++)"qdbm::Curia_error::Curia_error(int)@Base" 1.8.74
  (c++)"qdbm::Curia_error::Curia_error()@Base" 1.8.74
@@ -35,8 +36,6 @@ libxqdbm.so.3 #PACKAGE# #MINVER#
  (c++)"qdbm::Villa_error::~Villa_error()@Base" 1.8.74
  (c++)"qdbm::Villa_error::operator=(qdbm::Villa_error const&)@Base" 1.8.74
  (c++)"qdbm::Villa_error::operator=(int)@Base" 1.8.74
- (c++)"qdbm::ADBM::~ADBM()@Base" 1.8.74
- (c++)"qdbm::ADBM::~ADBM()@Base" 1.8.74
  (c++)"qdbm::Curia::fatalerror()@Base" 1.8.74
  (c++)"qdbm::Curia::get(char const*, int, int, int, int*)@Base" 1.8.74
  (c++)"qdbm::Curia::out(char const*, int)@Base" 1.8.74

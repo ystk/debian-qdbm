@@ -1,11 +1,12 @@
 Source: qdbm
 Priority: optional
 Maintainer: KURASHIKI Satoru <lurdan@gmail.com>
-Build-Depends: debhelper (>= 5.0.0), autoconf, autotools-dev, zlib1g-dev, perl-modules, ruby1.8-dev, ruby1.8, ruby1.9.1-dev, ruby1.9.1 , g++ (>= 4:4.0.2-2), default-jdk, chrpath
+Build-Depends: debhelper (>= 5.0.0), autoconf, autotools-dev, zlib1g-dev, perl-modules, gem2deb, g++ (>= 4:4.0.2-2), default-jdk, chrpath
 Homepage: http://fallabs.com/qdbm/
-Standards-Version: 3.9.2
+Standards-Version: 3.9.5
 Vcs-Git: git://anonscm.debian.org/collab-maint/qdbm.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/qdbm.git;a=summary
+XS-Ruby-Versions: all
 Section: libs
 
 Package: libqdbm14
@@ -80,13 +81,16 @@ Description: QDBM Database Libraries for C++ [development]
 
 Package: libqdbm3++c2
 Architecture: any
+Section: oldlibs
+Priority: extra
 Depends: libxqdbm3c2 (>= ${binary:Version}), ${misc:Depends}
 Description: QDBM Database Libraries for C++ [runtime] (transitional package)
  This is a dummy package to ease transition to new package name.
 
 Package: libqdbm++-dev
 Architecture: any
-Section: libdevel
+Section: oldlibs
+Priority: extra
 Depends: libxqdbm-dev (>= ${binary:Version}), ${misc:Depends}
 Suggests: qdbm-doc
 Description: QDBM Database Libraries for C++ [development] (transitional package)
@@ -105,35 +109,21 @@ Description: QDBM Database Libraries for Perl
  This package provides the Perl interface for the QDBM database library.
 
 Package: ruby-qdbm
+XB-Ruby-Versions: ${ruby:Versions}
+X-DhRuby-Root: ruby
 Architecture: any
 Section: ruby
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: qdbm-doc
-Provides: libqdbm-ruby1.8, libqdbm-ruby1.9.1
-Replaces: libqdbm-ruby1.8 (<< 1.8.78-1), libqdbm-ruby1.9.1 (<< 1.8.78-1)
-Breaks: libqdbm-ruby1.8 (<< 1.8.78-1), libqdbm-ruby1.9.1 (<< 1.8.78-1)
+Provides: libqdbm-ruby1.9.1
+Replaces: libqdbm-ruby1.9.1 (<< 1.8.78-1)
+Breaks: libqdbm-ruby1.8, libqdbm-ruby1.9.1 (<< 1.8.78-1)
 Description: QDBM Database Libraries for Ruby
  QDBM is an embeded database library compatible with GDBM and NDBM.
  It features hash database and B+ tree database and is developed referring
  to GDBM for the purpose of the following three points: higher processing
  speed, smaller size of a database file, and simpler API.
  This package provides the Ruby interface for the QDBM database library.
-
-Package: libqdbm-ruby1.8
-Architecture: any
-Section: ruby
-Depends: ruby-qdbm, ${shlibs:Depends}, ${misc:Depends}
-Suggests: qdbm-doc
-Description: QDBM Database Libraries for Ruby 1.8 (transitional package)
- This is a dummy package to ease transition to new package name.
-
-Package: libqdbm-ruby1.9.1
-Architecture: any
-Section: ruby
-Depends: ruby-qdbm, ${shlibs:Depends}, ${misc:Depends}
-Suggests: qdbm-doc
-Description: QDBM Database Libraries for Ruby 1.9.1 (transitional package)
- This is a dummy package to ease transition to new package name.
 
 Package: libqdbm-java
 Architecture: any
